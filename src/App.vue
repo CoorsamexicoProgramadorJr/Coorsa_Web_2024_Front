@@ -1,9 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router'
+  import { RouterView } from 'vue-router'
+  import Nav from '@/components/Nav.vue'
 </script>
 
 <template>
-  <h1>Start</h1>
-
-  <RouterView />
+  <main>
+    <Nav class="z-[1]"/>
+    <RouterView />
+  </main>
 </template>
