@@ -6,7 +6,7 @@
   import TestimoniosSeccion from '@/components/inicio/TestimoniosSeccion.vue'
 </script>
 
-<template>
+<template class="relative z-1">
   <Intro />
   <ServiciosSeccion />
   <TerritorioSeccion />

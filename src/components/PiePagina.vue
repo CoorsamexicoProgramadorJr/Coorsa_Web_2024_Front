@@ -1,12 +1,46 @@
 <script setup>
+  import { ref, watch } from 'vue'
   import { RouterLink } from 'vue-router'
-  import { Fancybox } from "@fancyapps/ui"
   import ApplicationMark from './ApplicationMark.vue'
 
-  Fancybox.bind("[data-fancybox]", {})
+  const props = defineProps({
+    currentRoute: {
+      type: String,
+      required: true
+    }
+  })
+  
+  const availableLinks = ref([])
+  const links = [
+    {
+      name: 'Inicio',
+      pathName: 'home',
+    }, 
+    {
+      name: 'Servicios',
+      pathName: 'servicios'
+    }, 
+    {
+      name: 'Conocenos',
+      pathName: 'conocenos'
+    }, 
+    {
+      name: 'Talento',
+      pathName: 'talento'
+    }, 
+    {
+      name: 'Blog',
+      pathName: 'blog'
+    }
+  ]
+  
+  watch(props, () => {
+    availableLinks.value = links.filter((link) => link.pathName != props.currentRoute)
+  })
+
 </script>
 <template>
-  <footer class="w-screen h-[30vh] bg-black border-t text-white pr-[2%]">
+  <footer class="w-screen h-[30vh] bg-black border-t text-white pr-[2%] z-[1] relative">
     <!-- Upper footer -->
     <article class="flex items-center gap-[1%] w-full h-2/3">
       <figure class="w-3/12 m-auto">
@@ -14,17 +48,8 @@
       </figure>
 
       <div class="flex flex-col items-center justify-around w-2/12 h-full py-[1%] gap-[2%] text-lg font-semibold">
-        <div class="hover:border-b border-b-red-700">
-          <RouterLink class="uppercase">Servicios</RouterLink>
-        </div>
-        <div class="hover:border-b border-b-red-700">
-          <RouterLink class="uppercase">Conocenos</RouterLink>
-        </div>
-        <div class="hover:border-b border-b-red-700">
-          <RouterLink class="uppercase">Talento</RouterLink>
-        </div>
-        <div class="hover:border-b border-b-red-700">
-          <RouterLink class="uppercase">Blog</RouterLink>
+        <div v-for="link in availableLinks" :key="link.name" class="hover:border-b border-b-red-700">
+          <RouterLink class="uppercase" :to="{ name: link.pathName }">{{ link.name }}</RouterLink>
         </div>
       </div>
 

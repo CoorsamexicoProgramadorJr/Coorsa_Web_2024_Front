@@ -1,6 +1,13 @@
 <script setup>
   import { RouterLink } from 'vue-router'
   import ApplicationMark from '@/components/ApplicationMark.vue'
+
+  const props = defineProps({
+    currentRoute : {
+      type: String,
+      required: true
+    }
+  })
 </script>
 <template>
   <nav class="bg-red-700 w-screen h-[8vh] flex justify-between items-center fixed top-0 left-0 right-0">
@@ -8,17 +15,17 @@
       <ApplicationMark class="text-white size-[80%]"/>
     </div>
     <div class="max-w-[77%] h-[100%] flex gap-5 mr-[2vw] text-white uppercase tracking-wide text-xl">
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="/">Inicio</RouterLink>
+      <div class="flex items-center px-4">
+        <RouterLink to="/" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Inicio</RouterLink>
       </div>
-      <div class="flex items-center px-4 hover:bg-red-800 dropdown">
-        <RouterLink to="" class="flex items-center">
+      <div class="flex items-center px-4 dropdown">
+        <RouterLink to="/servicios" active-class="underline underline-offset-8" class="flex items-center hover:underline hover:underline-offset-8">
           Servicios
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
             <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
           </svg>
         </RouterLink>
-        <!-- Dropdown Servicios -->
+        <!-- Start Dropdown Services -->
         <div class="absolute top-[8vh] right-[14px] bg-red-700 h-[17vh] w-[50vw] border-t border-t-white hidden drop-list">
           <div class="w-1/5 h-[100%] normal-case p-1 hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col gap-1 items-center border-r">
@@ -77,25 +84,24 @@
                 seguridad.
               </span>
             </a>
-          </div>
-          
+          </div>  
         </div>
       </div>
-      
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="">Conócenos</RouterLink>
+      <!-- End Dropdown Services -->
+      <div class="flex items-center px-4">
+        <RouterLink to="/conocenos" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Conócenos</RouterLink>
       </div>
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="">Talento</RouterLink>
+      <div class="flex items-center px-4">
+        <RouterLink to="/talento"  active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Talento</RouterLink>
       </div>
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="">Blog</RouterLink>
+      <div class="flex items-center px-4">
+        <RouterLink to="/blog" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Blog</RouterLink>
       </div>
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="">Contacto</RouterLink>
+      <div class="flex items-center px-4">
+        <RouterLink to="/contacto" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Contacto</RouterLink>
       </div>
-      <div class="flex items-center px-4 hover:bg-red-800">
-        <RouterLink to="">ERP</RouterLink>
+      <div class="flex items-center px-4">
+        <RouterLink to="/erp" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">ERP</RouterLink>
       </div>
     </div>
   </nav>
