@@ -5,7 +5,6 @@ import ServiciosView from '@/views/ServiciosView.vue'
 import TalentoView from '@/views/TalentoView.vue'
 import BlogView from '@/views/BlogView.vue'
 import ContactoView from '@/views/ContactoView.vue'
-import ErpView from '@/views/ErpView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,12 +38,7 @@ const router = createRouter({
       path: '/contacto/:vacancyId?',
       name: 'contacto',
       component: ContactoView,
-    },
-    {
-      path: '/erp',
-      name: 'erp',
-      component: ErpView
-    },
+    }
   ]
 })
 

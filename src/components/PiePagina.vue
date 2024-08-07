@@ -42,29 +42,29 @@
 <template>
   <footer class="w-screen h-[30vh] bg-black border-t text-white pr-[2%] z-[1] relative">
     <!-- Upper footer -->
-    <article class="flex items-center gap-[1%] w-full h-2/3">
-      <figure class="w-3/12 m-auto">
-        <ApplicationMark class="object-contain mx-auto"/>
+    <article class="flex justify-around items-center gap-[1%] w-full h-2/3">
+      <figure class="w-2/6">
+        <ApplicationMark class="object-cover m-auto"/>
       </figure>
 
-      <div class="flex flex-col items-center justify-around w-2/12 h-full py-[1%] gap-[2%] text-lg font-semibold">
+      <div class="flex flex-col items-center justify-around w-1/6 h-full py-[1%] xl:gap-[2%] lg:gap-[1%] xl:text-lg font-semibold lg:text-base">
         <div v-for="link in availableLinks" :key="link.name" class="hover:border-b border-b-red-700">
           <RouterLink class="uppercase" :to="{ name: link.pathName }">{{ link.name }}</RouterLink>
         </div>
       </div>
 
-      <div class="w-4/12 h-full">
+      <div class="w-2/6 h-full">
         <div class="my-[2%]">
-          <h4 class="w-1/4 text-lg uppercase border-b border-b-red-700 my-[2%] font-bold">Sede</h4>
-          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank">Terra Business Park # 31 y 32C, 76269. Querétaro México.</a>
+          <h4 class="w-1/4 xl:text-lg lg:text-base uppercase border-b border-b-red-700 my-[2%] font-bold">Sede</h4>
+          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="xl:text-base lg:text-sm">Terra Business Park # 31 y 32C, 76269. Querétaro México.</a>
         </div>
         <div>
-          <h3 class="w-1/4 text-lg uppercase border-b border-b-red-700 my-[2%] font-bold">Warehouse</h3>
-          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank">Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.</a>
+          <h3 class="w-1/4 xl:text-lg lg:text-base uppercase border-b border-b-red-700 my-[2%] font-bold">Warehouse</h3>
+          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="xl:text-base lg:text-sm">Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.</a>
         </div>
       </div>
 
-      <div class="flex flex-col items-center justify-center w-2/12 h-full gap-[10%]">
+      <div class="flex flex-col items-center justify-center w-1/6 h-full gap-[10%]">
         <div class="w-[50%] flex items-center justify-center gap-[20%]">
           <a href="https://www.linkedin.com/company/corsa-méxico/mycompany/" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="size-8 fill-white hover:fill-red-700" viewBox="0 0 50 50">
@@ -77,23 +77,27 @@
             </svg>
           </a>
         </div>
-        <button class="uppercase bg-red-700 w-[40%] h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
+        <button class="uppercase bg-red-700 xl:w-[40%] lg:w-2/3 h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
       </div>
     </article>
     <!-- Lower footer -->
     <article class="flex items-center w-full h-1/3 gap-[1%]">
       <div class="flex items-center justify-center border-r border-red-700 h-2/3 w-[66.66%]">
-        <p class="text-xl tracking-widest">
+        <p class="tracking-widest xl:text-xl lg:text-lg">
           &#xA9; 2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 
         </p>
       </div>
       
-      <div class="flex items-center w-1/3 divide-x divide-red-700 h-2/3 gap-[1%]">
-        <div class="flex items-center justify-center w-[54.5%] h-full">
-          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-lg text-center">AVISO PRIVACIDAD COLABORADOR</a>
+      <div class="flex items-center w-1/3 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl lg:text-base">
+        <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
+          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-center">
+            AVISO PRIVACIDAD COLABORADOR
+          </a>
         </div>
-        <div class="flex items-center justify-center w-[54.5%] h-full">
-          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20CLIENTES.pdf" class="text-lg text-center">AVISO PRIVACIDAD CLIENTE</a>
+        <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
+          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20CLIENTES.pdf" class="text-center">
+            AVISO PRIVACIDAD CLIENTE
+          </a>
         </div>
       </div>
     </article>

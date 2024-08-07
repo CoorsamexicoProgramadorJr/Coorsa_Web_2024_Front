@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <section class="w-screen h-screen z-[1] relative bg-conocenos grayscale hover:grayscale-0 group/cont">
+  <section class="w-screen h-screen z-[1] relative bg-[url('https://storage.googleapis.com/coorsa-mexico-web/img/TeamColor.jpg')] bg-cover grayscale hover:grayscale-0 group/cont">
     <div class="size-full backdrop-contrast-75 backdrop-opacity-100 backdrop-brightness-50 gap-[10%] intro-txt hidden group-hover/cont:flex flex-col justify-center items-center">
       <h2 class="font-light tracking-widest text-center text-white uppercase text-7xl">Cumplimos +10 años creando<br/>
         <span class="font-bold">soluciones innovadoras</span>
@@ -15,10 +15,3 @@
     </div>
   </section>
 </template>
-
-<style scoped>
-  .bg-conocenos{
-    background-image: url('https://storage.googleapis.com/coorsa-mexico-web/img/TeamColor.jpg');
-    background-size: cover;
-  }
-</style>

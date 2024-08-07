@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-  <section class="w-screen h-[90vh] pt-[8vh] bg-talento">
+  <section class="w-screen h-[90vh] pt-[8vh] bg-[url('/img/conocenos.png')] bg-cover">
     <div class="flex flex-col justify-center float-left w-2/3 h-full pl-[5%] text-white">
       <h1 class="font-bold text-7xl">Bienvenidos a COORSA</h1>
       <h2 class="text-5xl font-semibold">Soluciones Logísticas</h2>
@@ -10,9 +10,3 @@
     </div>
   </section>
 </template>
-
-<style scoped>
-  .bg-talento{
-    background-image: url('/img/conocenos.png');
-  }
-</style>

@@ -10,7 +10,8 @@
       center: true,
       slidesPerPage: 3,
       Autoplay: {
-        timeout: 5000
+        timeout: 4000,
+        showProgress: false
       }
     };
 
@@ -18,66 +19,64 @@
   })
 </script>
 <template>
-  <section class="w-screen h-[92vh] bg-black pt-[1%] flex flex-col justify-around items-center">
-    <h2 class="text-5xl font-bold text-white uppercase w-[85%]">Testimonios</h2>
-    <div class="f-carousel w-[90%] min-h-[60%] max-h-[80%] mx-auto text-white" id="TstCarousel">
-      <div class="f-carousel__viewport">
-        <div class="f-carousel__slide rounded-xl">
-          <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
-            <p class="text-lg text-pretty">
-              <span class="inline-block leading-none text-9xl">&#8221;</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
-              exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
-              <span class="block float-right leading-none text-9xl">&#8221;</span>
-              <div class="clear"></div>
-            </p>
-            <footer class="w-[30%] flex justify-center items-center gap-[5%] bg-white rounded-md">
-              <div class="bg-red-700 rounded-full w-[10%] h-[50%]"></div>
-              <cite class="text-black uppercase">Lore</cite>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="f-carousel__slide rounded-xl">
-          <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
-            <p class="text-lg text-pretty">
-              <span class="inline-block leading-none text-9xl">&#8221;</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
-              exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
-              <span class="block float-right leading-none text-9xl">&#8221;</span>
-              <div class="clear"></div>
-            </p>
-            <footer class="w-[30%] flex justify-center items-center gap-[5%] bg-white rounded-md">
-              <div class="bg-red-700 rounded-full w-[10%] h-[50%]"></div>
-              <cite class="text-black uppercase">Lore</cite>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="f-carousel__slide rounded-xl">
-          <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
-            <p class="text-lg">
-              <span class="text-9xl">&#8221;</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
-              exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
-            </p>
-            <footer class="w-[30%] flex justify-center items-center gap-[5%] bg-white rounded-md">
-              <div class="bg-red-700 rounded-full w-[10%] h-[50%]"></div>
-              <cite class="text-black uppercase">Lore</cite>
-            </footer>
-          </blockquote>
-        </div>
-        <div class="f-carousel__slide rounded-xl">
-          <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
-            <p class="text-lg">
-              <span class="text-9xl">&#8221;</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
-              exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
-            </p>
-            <footer class="w-[30%] flex justify-center items-center gap-[5%] bg-white rounded-md">
-              <div class="bg-red-700 rounded-full w-[10%] h-[50%]"></div>
-              <cite class="text-black uppercase">Lore</cite>
-            </footer>
-          </blockquote>
-        </div>
+  <section class="w-screen h-[92vh] bg-black pt-[1%] flex flex-col justify-around items-center relative">
+    <h2 class="xl:text-7xl lg:text-5xl font-bold text-white uppercase w-[85%]">Testimonios</h2>
+    <div class="f-carousel w-[80%] min-h-[70%]  mx-auto text-white xl:text-lg lg:text-base" id="TstCarousel">
+      <div class="f-carousel__slide rounded-xl">
+        <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
+          <p class="text-pretty">
+            <span class="inline-block leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
+            exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
+            <span class="block float-right leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+          </p>
+          <div class="xl:w-[30%] lg:w-[40%] flex justify-center items-center gap-[5%] bg-white rounded-md">
+            <div class="bg-red-700 rounded-full xl:size-4 lg:size-3"></div>
+            <cite class="text-black uppercase">Lore</cite>
+          </div>
+        </blockquote>
+      </div>
+      <div class="f-carousel__slide rounded-xl">
+        <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
+          <p class="ttext-pretty">
+            <span class="inline-block leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
+            exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
+            <span class="block float-right leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+          </p>
+          <div class="xl:w-[30%] lg:w-[40%] flex justify-center items-center gap-[5%] bg-white rounded-md">
+            <div class="bg-red-700 rounded-full xl:size-4 lg:size-3"></div>
+            <cite class="text-black uppercase">Lore</cite>
+          </div>
+        </blockquote>
+      </div>
+      <div class="f-carousel__slide rounded-xl">
+        <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
+          <p class="">
+            <span class="inline-block leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
+            exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
+            <span class="block float-right leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+          </p>
+          <div class="xl:w-[30%] lg:w-[40%] flex justify-center items-center gap-[5%] bg-white rounded-md">
+            <div class="bg-red-700 rounded-full xl:size-4 lg:size-3"></div>
+            <cite class="text-black uppercase">Lore</cite>
+          </div>
+        </blockquote>
+      </div>
+      <div class="f-carousel__slide rounded-xl">
+        <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">
+          <p class="">
+            <span class="inline-block leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis maiores nulla quis enim corrupti officia 
+            exercitationem sequi repellat harum ipsum ab, veritatis perferendis odio voluptatem facilis explicabo unde doloremque.
+            <span class="block float-right leading-none xl:text-9xl lg:text-8xl">&#8221;</span>
+          </p>
+          <div class="xl:w-[30%] lg:w-[40%] flex justify-center items-center gap-[5%] bg-white rounded-md">
+            <div class="bg-red-700 rounded-full xl:size-4 lg:size-3"></div>
+            <cite class="text-black uppercase">Lore</cite>
+          </div>
+        </blockquote>
       </div>
     </div>
   </section>

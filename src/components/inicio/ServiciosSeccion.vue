@@ -12,7 +12,9 @@
       Dots: false,
       slidesPerPage: 1,
       AutoPlay: {
-        timeout: 3000
+        timeout: 3000,
+        showProgress: false,
+        progressParentEl: false
       }
     };
 
@@ -20,51 +22,24 @@
   })
 </script>
 <template>
-  <section class="w-screen h-[92vh] text-white bg-black pt-[2%] flex flex-col justify-around items-center">
-    <h2 class="text-5xl font-bold uppercase text-left w-[85%]">Servicios</h2>
+  <section class="w-screen h-[92vh] text-white bg-black pt-[1%] flex flex-col justify-around items-center">
+    <h2 class="xl:text-7xl lg:text-5xl text-3xl font-bold uppercase text-left w-[85%]">Servicios</h2>
     <!-- Carrousel -->
-    <div class="f-carousel w-[85%] min-h-[50%] max-h-[70%]" id="myCarousel">
-      <div class="f-carousel__viewport">
-        <figure class="relative f-carousel__slide">
-          <a href="">
-            <img src="/img/almacen.jpg" alt="Imagen de un almacen" class="w-full rounded-lg">
-          </a>
-          <figcaption class="h-[10%] absolute bottom-[2%] left-[5%] mx-auto ">
-            <h3 class="text-2xl font-bold uppercase">Warehouse</h3>
-          </figcaption>
-        </figure>
-        <figure class="relative f-carousel__slide">
-          <a href="">
-            <img src="/img/quinta-servicio.jpg" alt="Imagen de un camión de patio" class="w-full rounded-lg">
-          </a>
-          <figcaption class="h-[10%] absolute bottom-[2%] left-[5%] mx-auto ">
-            <h3 class="text-2xl font-bold uppercase">Camiones de Patio</h3>
-          </figcaption>
-        </figure>
-        <figure class="relative f-carousel__slide">
-          <a href="">
-            <img src="/img/maniobras.jpg" alt="Imagen de maniobras" class="w-full rounded-lg">
-          </a>
-          <figcaption class="h-[10%] absolute bottom-[2%] left-[5%] mx-auto ">
-            <h3 class="text-2xl font-bold uppercase">Maniobras</h3>
-          </figcaption>
-        </figure>
-        <figure class="relative f-carousel__slide">
-          <a href="">
-            <img src="/img/smark-glove.jpg" alt="Imagen de tecnologias" class="w-full rounded-lg">
-          </a>
-          <figcaption class="h-[10%] absolute bottom-[2%] left-[5%] mx-auto ">
-            <h3 class="text-2xl font-bold uppercase">Desarrollo de Tecnologías</h3>
-          </figcaption>
-        </figure>
-        <figure class="relative f-carousel__slide">
-          <a href="">
-            <img src="/img/logistica-inversa.jpg" alt="Imagen de un almacen" class="w-full rounded-lg">
-          </a>
-          <figcaption class="h-[10%] absolute bottom-[2%] left-[5%] mx-auto ">
-            <h3 class="text-2xl font-bold uppercase">Delivery Management</h3>
-          </figcaption>
-        </figure>
+    <div class="f-carousel w-[85%] min-h-[60%] max-h-[70%] xl:text-3xl/none lg:text-xl/tight" id="myCarousel">
+      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/almacen.jpg">
+        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Warehouse</h3>
+      </div>
+      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/quinta-servicio.jpg">
+        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Camiones de Patio</h3>
+      </div>
+      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/maniobras.jpg">
+        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Maniobras</h3>
+      </div>
+      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/smark-glove.jpg">
+        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Desarrollo de Tecnologías</h3>
+      </div>
+      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/logistica-inversa.jpg">
+        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Delivery Management</h3>
       </div>
     </div>
   </section>
