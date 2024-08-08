@@ -1,4 +1,5 @@
 <script setup>
+  import { ref } from 'vue' 
   import { RouterLink } from 'vue-router'
   import ApplicationMark from '@/components/ApplicationMark.vue'
 
@@ -8,28 +9,43 @@
       required: true
     }
   })
+  
+  const openMenu = ref(false)
+  const serviciosSubMenu = ref(false)
+
+
+  const manageOpen = () => {
+    openMenu.value = !openMenu.value
+  }
+
+  const manageSubMenu = () => {
+    serviciosSubMenu.value = !serviciosSubMenu.value
+  }
 </script>
 <template>
   <nav class="bg-red-700 w-screen h-[8vh] flex justify-between items-center fixed top-0 left-0 right-0 px-[3%]">
     <div class="h-full xl:w-[15%] lg:w-[20%] flex justify-center items-center">
-      <ApplicationMark class="text-white w-[75%]"/>
+      <ApplicationMark class="text-white lg:w-[75%] md:w-[65%]"/>
     </div>
-    <div class="xl:w-[60%] lg:w-[70%] h-[100%] flex gap-[2%] text-white uppercase tracking-wide xl:text-xl lg:text-md">
+
+    <!-- Links for desktop devices -->
+    <div class=" xl:w-[60%] lg:w-[70%] lg:h-[100%] gap-[2%] text-white uppercase tracking-wide xl:text-xl lg:text lg:flex sm:hidden">
       <div class="flex items-center justify-center flex-1">
-        <RouterLink to="/" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">
+        <RouterLink to="/" active-class="underline underline-offset-8" class="max-h-full lg:hover:underline lg:hover:underline-offset-8">
           Inicio
         </RouterLink>
       </div>
-      <div class="flex items-center justify-center flex-1 group">
+      <div class="flex items-center justify-center flex-1 group sm:flex-col">
         <RouterLink to="/servicios" active-class="underline underline-offset-8" class="flex items-center hover:underline hover:underline-offset-8">
           Servicios
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
             <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
           </svg>
         </RouterLink>
+
         <!-- Start Dropdown Services -->
-        <div class="absolute top-[8vh] xl:right-[2%] lg:right-0 bg-red-700 h-[17vh] xl:w-[50vw] lg:w-[65vw] border-t border-t-white divide-x hidden group-hover:flex 2xl:text-xl xl:text-lg/3">
-          <div class="w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
+        <div class="lg:absolute lg:top-[8vh] xl:right-[2%] lg:right-0 bg-red-700 lg:h-[17vh] xl:w-[50vw] lg:w-[65vw] lg:border-t lg:border-t-white lg:divide-x divide-white sm:hidden group-hover:flex 2xl:text-xl xl:text-lg/3">
+          <div class="lg:w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-1/3">
                 <path d="M19.006 3.705a.75.75 0 1 0-.512-1.41L6 6.838V3a.75.75 0 0 0-.75-.75h-1.5A.75.75 0 0 0 3 3v4.93l-1.006.365a.75.75 0 0 0 .512 1.41l16.5-6Z" />
@@ -41,7 +57,7 @@
               </span>
             </a>
           </div>
-          <div class="w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
+          <div class="lg:w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-1/3">
                 <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 1 1 6 0h3a.75.75 0 0 0 .75-.75V15Z" />
@@ -52,7 +68,7 @@
               <span class="text-xs leading-tight tracking-tighter text-center">Gestión eficiente y segura del movimiento dentro del patio.</span>
             </a>
           </div>
-          <div class="w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
+          <div class="lg:w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-1/3">
                 <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
@@ -62,7 +78,7 @@
               <span class="text-xs leading-tight tracking-tighter text-center">Mano de obra cualificada.</span>
             </a>
           </div>
-          <div class="w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
+          <div class="lg:w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-1/3">
                 <path d="M12 .75a8.25 8.25 0 0 0-4.135 15.39c.686.398 1.115 1.008 1.134 1.623a.75.75 0 0 0 .577.706c.352.083.71.148 1.074.195.323.041.6-.218.6-.544v-4.661a6.714 6.714 0 0 1-.937-.171.75.75 0 1 1 .374-1.453 5.261 5.261 0 0 0 2.626 0 .75.75 0 1 1 .374 1.452 6.712 6.712 0 0 1-.937.172v4.66c0 .327.277.586.6.545.364-.047.722-.112 1.074-.195a.75.75 0 0 0 .577-.706c.02-.615.448-1.225 1.134-1.623A8.25 8.25 0 0 0 12 .75Z" />
@@ -74,7 +90,7 @@
               </span>
             </a>
           </div>
-          <div class="w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
+          <div class="lg:w-1/5 h-[100%] normal-case p-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col items-center justify-around">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-1/3">
                 <path fill-rule="evenodd" d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" clip-rule="evenodd" />
@@ -90,6 +106,7 @@
         </div>
       </div>
       <!-- End Dropdown Services -->
+       
       <div class="flex items-center justify-center flex-1">
         <RouterLink to="/conocenos" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">
           Conócenos
@@ -107,6 +124,60 @@
       <div class="flex items-center justify-center flex-1">
         <RouterLink to="" class="hover:underline hover:underline-offset-8">ERP</RouterLink>
       </div>
+    </div>
+
+    <!-- nav for mobile devices -->
+    <button class="w-[10%] max-h-[full] text-white lg:hidden" @click="manageOpen">
+      <svg v-if="openMenu === false" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-11/12 mx-auto">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+      <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-11/12 mx-auto">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+      </svg>
+    </button>
+
+    <div v-if="openMenu" class="absolute top-[8vh] left-0 w-full max-w-[100vw] bg-red-700 border-t border-white lg:hidden flex flex-col gap-1 text-white text-center p-[1%] divide-y divide-red-800 uppercase font-bold">
+      <RouterLink to="/">Inicio</RouterLink>
+      <div class="grid grid-cols-5 grid-rows-1 place-items-center">
+        <RouterLink to="/servicios" class="col-start-3">
+          Servicios
+        </RouterLink>
+        <button class="col-start-5" @click="manageSubMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8" :class="{ 'block' : serviciosSubMenu === false, 'hidden' : serviciosSubMenu }">
+            <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8" :class="{ 'block animate-bounce' : serviciosSubMenu , 'hidden' : serviciosSubMenu === false}">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+      <div v-if="serviciosSubMenu" class="flex flex-col items-center gap-1 font-semibold bg-red-600 divide-y divide-red-800">
+        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1px] p-1 text-sm">
+          Warehouse
+          <span class="text-xs font-light normal-case">Soluciones integrales para la gestión y optimización de almacenes, y operaciones 3PL.</span>
+        </RouterLink>
+        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1pxd] p-1 text-sm">
+          Camiones de Patio
+          <span class="text-xs font-light normal-case">Gestión eficiente y segura del movimiento dentro del patio.</span>
+        </RouterLink>
+        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1px] p-1 text-sm">
+          Maniobras
+          <span class="text-xs font-light normal-case">Mano de obra cualificada.</span>
+        </RouterLink>
+        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1px] p-1 text-sm">
+          Desarrollo de Tecnologías
+          <span class="text-xs font-light normal-case">Soluciones tecnológicas personalizadas para optimizar operaciones logísticas.</span>
+        </RouterLink>
+        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1px] p-1 text-sm">
+          Delivery Management
+          <span class="text-xs font-light normal-case">Gestión integral y eficiente de entregas, garantizando puntualidad y seguridad.</span>
+        </RouterLink>
+      </div>
+      <RouterLink to="/conocenos">Conócenos</RouterLink>
+      <RouterLink to="/talento">Talento</RouterLink>
+      <RouterLink to="/blog">Blog</RouterLink>
+      <RouterLink to="/contacto">Contacto</RouterLink>
+      <RouterLink to="">Erp</RouterLink>
     </div>
   </nav>
 </template>
