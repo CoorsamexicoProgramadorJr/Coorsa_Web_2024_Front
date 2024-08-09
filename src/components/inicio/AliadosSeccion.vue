@@ -1,8 +1,8 @@
 <script setup></script>
 <template>
   <section class="w-screen h-[92vh] py-[3%]">
-    <h2 class="xl:text-7xl lg:text-5xl font-bold uppercase pl-[3%]">Nuestros Aliados</h2>
-    <div class="grid grid-cols-4 grid-rows-3 gap-[2%] w-[90%] mx-auto my-[5%] max-h-[80%]">
+    <h2 class="xl:text-7xl lg:text-5xl md:text-3xl font-bold uppercase pl-[3%]">Nuestros Aliados</h2>
+    <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-rows-3 gap-[2%] w-[90%] mx-auto my-[5%] max-h-[80%]">
       <figure class="flex items-center justify-center grayscale hover:grayscale-0 size-full">
         <img src="/icons/walmart-color.svg" alt="Logo Walmart" class="w-[80%]">
       </figure>
