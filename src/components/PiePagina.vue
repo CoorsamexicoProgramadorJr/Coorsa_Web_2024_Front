@@ -108,7 +108,7 @@
     <!-- Upper footer -->
     <div class="flex justify-around items-center gap-[1%] w-full h-3/6">
       <div class="flex flex-col items-center justify-around w-3/12 h-full py-[1%] font-semibold">
-        <div v-for="link in availableLinks" :key="link.name" class="hover:border-b border-b-red-700">
+        <div v-for="link in availableLinks" :key="link.name" class="text-sm hover:border-b border-b-red-700 md:text-base">
           <RouterLink class="uppercase" :to="{ name: link.pathName }">{{ link.name }}</RouterLink>
         </div>
       </div>
@@ -137,17 +137,17 @@
             </svg>
           </a>
         </div>
-        <button class="uppercase bg-red-700 w-[50%] h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
+        <button class="uppercase bg-red-700 md:w-[50%] w-[60%] h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
       </div>
     </div>
 
     <!-- Middle footer -->
     <div class="flex items-center divide-x divide-red-700 h-2/6">
       <figure class="w-1/2">
-        <ApplicationMark class="object-cover m-auto md:w-[80%]"/>
+        <ApplicationMark class="object-cover m-auto md:w-[80%] w-[75%]"/>
       </figure>
 
-      <div class="flex items-center w-1/2 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl lg:text-base">
+      <div class="flex items-center w-1/2 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl md:text-base text-sm">
         <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
           <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-center">
             AVISO PRIVACIDAD COLABORADOR
@@ -161,7 +161,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center h-1/6">
-      <p class="text-lg tracking-widest">
+      <p class="text-base tracking-widest md:text-lg">
         &#xA9; 2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 
       </p>
     </div>

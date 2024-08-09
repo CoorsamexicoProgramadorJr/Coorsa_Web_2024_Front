@@ -24,8 +24,8 @@
 </script>
 <template>
   <nav class="bg-red-700 w-screen h-[8vh] flex justify-between items-center fixed top-0 left-0 right-0 px-[3%]">
-    <div class="h-full xl:w-[15%] lg:w-[20%] flex justify-center items-center">
-      <ApplicationMark class="text-white lg:w-[75%] md:w-[65%]"/>
+    <div class="h-full xl:w-[15%] lg:w-[20%] sm:w-[40%] flex justify-center items-center">
+      <ApplicationMark class="text-white lg:w-[75%] md:w-[65%] sm:w-[80%]"/>
     </div>
 
     <!-- Links for desktop devices -->
