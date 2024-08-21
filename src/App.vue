@@ -15,7 +15,7 @@
 
 <template>
   <main class="z-[3]">
-    <Nav class="z-[2]" :currentRoute="actualRoute"/>
+    <Nav :currentRoute="actualRoute"/>
     <RouterView />
     <PiePagina :currentRoute="actualRoute"/>
   </main>

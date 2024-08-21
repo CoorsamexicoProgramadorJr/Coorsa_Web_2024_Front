@@ -1,7 +1,8 @@
 <script setup>
   import { ref, watch } from 'vue'
   import { RouterLink } from 'vue-router'
-  import ApplicationMark from './ApplicationMark.vue'
+  import { Fancybox } from "@fancyapps/ui"
+  import ApplicationMark from '@/components/icons/ApplicationMark.vue'
 
   const props = defineProps({
     currentRoute: {
@@ -38,9 +39,11 @@
     availableLinks.value = links.filter((link) => link.pathName != props.currentRoute)
   })
 
+  Fancybox.bind("[data-fancybox]", {})
+
 </script>
 <template>
-  <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] z-[1] relative lg:block sm:hidden">
+  <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] relative lg:block sm:hidden z-[2]">
     <!-- Upper footer -->
     <article class="flex justify-around items-center gap-[1%] w-full h-2/3">
       <figure class="lg:w-2/6">
@@ -90,12 +93,12 @@
       
       <div class="flex items-center w-1/3 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl lg:text-base">
         <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
-          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-center">
+          <a data-fancybox data-src="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-center hover:cursor-pointer">
             AVISO PRIVACIDAD COLABORADOR
           </a>
         </div>
         <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
-          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20CLIENTES.pdf" class="text-center">
+          <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20CLIENTES.pdf" class="text-center hover:cursor-pointer">
             AVISO PRIVACIDAD CLIENTE
           </a>
         </div>
@@ -104,7 +107,7 @@
   </footer>
   
   <!-- Mobile footer -->
-  <footer class="w-screen h-[40vh] bg-black border-t text-white z-[1] relative lg:hidden sm:block">
+  <footer class="w-screen h-[40vh] bg-black border-t text-white z-[2] relative lg:hidden sm:block">
     <!-- Upper footer -->
     <div class="flex justify-around items-center gap-[1%] w-full h-3/6">
       <div class="flex flex-col items-center justify-around w-3/12 h-full py-[1%] font-semibold">

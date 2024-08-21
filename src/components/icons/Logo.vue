@@ -1,11 +1,12 @@
-<svg
+<template>
+  <svg
     id="Grupo_5"
     data-name="Grupo 5"
     xmlns="http://www.w3.org/2000/svg"
     width="48.497"
     height="46.926"
     viewBox="0 0 48.497 46.926"
->
+  >
     <path
         id="Trazado_26"
         data-name="Trazado 26"
@@ -46,4 +47,5 @@
         class="fill-current"
         fill-rule="evenodd"
     />
-</svg>
+  </svg>
+</template>

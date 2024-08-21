@@ -1,5 +1,5 @@
 <script setup>
-  import CoorsaLogo from '../CoorsaLogo.vue'
+  import CoorsaLogo from '@/components/icons/CoorsaLogo.vue'
 </script>
 <template>
   <section class="w-screen h-[92vh] relative">
