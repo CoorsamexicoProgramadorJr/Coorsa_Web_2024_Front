@@ -9,6 +9,7 @@
       infinite: true,
       center: true,
       slidesPerPage: 3,
+      centered: true,
       Autoplay: {
         timeout: 4000,
         showProgress: false
@@ -21,7 +22,9 @@
 </script>
 <template>
   <section class="w-screen h-[92vh] bg-black pt-[1%] flex flex-col justify-around items-center relative">
-    <h2 class="xl:text-7xl lg:text-5xl md:text-3xl sm:text-2xl font-bold text-white uppercase w-[85%]">Testimonios</h2>
+    <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold text-white uppercase w-[85%] text-center md:text-left">
+      Testimonios
+    </h2>
     <div class="f-carousel md:w-[80%] w-[85%] min-h-[70%]  mx-auto text-white xl:text-lg lg:text-base" id="TstCarousel">
       <div class="f-carousel__slide rounded-xl">
         <blockquote class="flex flex-col items-center justify-around size-full p-[5%]">

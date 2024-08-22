@@ -23,7 +23,7 @@
 </script>
 <template>
   <section class="w-screen h-[92vh] text-white bg-black pt-[1%] flex flex-col justify-around items-center">
-    <h2 class="xl:text-7xl lg:text-5xl md:text-4xl text-3xl font-bold uppercase text-left w-[85%]">Servicios</h2>
+    <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold uppercase md:text-left w-[85%] text-center">Servicios</h2>
     <!-- Carrousel -->
     <div class="f-carousel w-[85%] min-h-[60%] max-h-[70%] xl:text-3xl/none lg:text-xl/tight sm:text-lg" id="myCarousel">
       <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/almacen.jpg">

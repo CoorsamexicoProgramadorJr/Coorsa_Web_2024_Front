@@ -2,7 +2,7 @@
   import CoorsaLogo from '@/components/icons/CoorsaLogo.vue'
 </script>
 <template>
-  <section class="w-screen h-[92vh] relative">
+  <section class="w-screen h-[92vh] relative hidden md:block">
     <header class="absolute md:right-[10%] top-[8%] right-0">
       <h2 class="font-bold text-white uppercase lg:text-5xl xl:text-7xl md:text-4xl sm:text-2xl">Territorio</h2>
       <div class="ml-[4%]">

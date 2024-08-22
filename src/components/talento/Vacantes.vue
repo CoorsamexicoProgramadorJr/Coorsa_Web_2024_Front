@@ -6,7 +6,6 @@
   const router = useRouter()
   const openVacancies = ref(false)
   const newVacancies = ref([])
-  const mt_text = ref('')
 
   const chgVacancy = () => openVacancies.value = !openVacancies.value
   
@@ -22,25 +21,25 @@
 </script>
 <template>
   <section class="w-[100vw] min-h-[92vh] p-[3%]" id="sec-vacantes">
-    <h2 class="xl:text-7xl lg:text-5xl font-bold text-black uppercase mb-[3%]">Vacantes</h2>
-    <div class="flex items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-3xl lg:text-2xl">
-      <button @click="openList(1)" class="xl:w-[20%] lg:w-[25%] h-full min-h-80 rounded-2xl flex justify-center items-center font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
+    <h2 class="xl:text-7xl lg:text-6xl font-bold text-black uppercase md:mb-[3%] mb-10 text-4xl">Vacantes</h2>
+    <div class="flex md:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-5xl lg:text-4xl text-2xl md:space-y-0 space-y-10">
+      <button @click="openList(1)" class="xl:w-[20%] lg:w-[25%] w-[80%] md:h-full h-16 md:min-h-80 md:rounded-2xl rounded-full font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
         Practicas
       </button>
-      <button @click="openList(2)" class="xl:w-[20%] lg:w-[25%] h-full min-h-80 rounded-2xl flex justify-center items-center font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
+      <button @click="openList(2)" class="xl:w-[20%] lg:w-[25%] w-[80%] md:h-full h-16 md:min-h-80 md:rounded-2xl rounded-full font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
         Operación
       </button>
-      <button @click="openList(3)" class="xl:w-[20%] lg:w-[25%] h-full min-h-80 rounded-2xl flex justify-center items-center font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
+      <button @click="openList(3)" class="xl:w-[20%] lg:w-[25%] w-[80%] md:h-full h-16 md:min-h-80 md:rounded-2xl rounded-full font-semibold text-red-700 pb-[1%] border-2 border-red-700 uppercase">
         Administrativas
       </button>
     </div>
     <div v-if="newVacancies.length != 0 && openVacancies" class="m-[5%] flex flex-col items-center">
       <details class="w-[90%] mb-[2%] flex flex-col items-center" v-for="vacancy in newVacancies" :key="vacancy.id">
-        <summary class="w-full xl:text-3xl lg:text-2xl border-b-2 border-red-700 pb-[1%] text-red-700" open>
+        <summary class="w-full xl:text-4xl lg:text-3xl text-2xl border-b-2 border-red-700 pb-[1%] text-red-700" open>
           <span class="font-bold text-black">{{ vacancy.name }}</span>
         </summary>
         <div class="py-[2%] px-[4%]">
-          <dl class="xl:text-xl lg:text-lg">
+          <dl class="text-lg xl:text-2xl lg:text-xl">
             <div class="flex gap-[2%] items-center my-[1%]">
               <dt class="font-semibold uppercase">Ubicación:</dt>
               <dd class="font-light">{{ vacancy.location }}</dd>
@@ -65,12 +64,12 @@
             </div>
           </dl>
         </div>
-        <button @click="apply(vacancy.id)" class="w-1/5 h-10 mx-auto font-bold text-white uppercase bg-red-700 rounded-xl">Postulate</button>
+        <button @click="apply(vacancy.id)" class="w-1/3 h-10 mx-auto font-bold text-white uppercase bg-red-700 md:w-1/5 rounded-xl">Postulate</button>
       </details>
     </div>
-    <div class="w-full h-1/5" :class="{ 'mt-[10%]' : openVacancies == false, 'mt-[4%]' : openVacancies}">
-      <h3 class="text-5xl text-center">Juntos, hagamos de lo bueno, algo mejor.</h3>
-      <p class="text-5xl font-bold text-center text-red-700 uppercase">Somos Coorsa</p>
+    <div class="w-full text-3xl md:text-5xl h-1/5" :class="{ 'md:mt-[20%] mt-[40%]' : openVacancies == false, 'mt-[4%]' : openVacancies}">
+      <h3 class="text-center">Juntos, hagamos de lo bueno, algo mejor.</h3>
+      <p class="font-bold text-center text-red-700 uppercase">Somos Coorsa</p>
     </div>
   </section>
 </template>

@@ -38,7 +38,7 @@
     </button>
     <div v-if="openMenu" class="absolute top-[8vh] right-0 w-full bg-red-700 flex flex-col px-[5%] border-t-2 border-red-800 divide-y-2 divide-red-800 text-center uppercase">
       <div class="py-1">
-        <RouterLink to="/">Inicio</RouterLink>
+        <RouterLink to="/" @click="manageOpen">Inicio</RouterLink>
       </div>
       <div class="flex justify-end py-1">
         <RouterLink to="/servicios" class="">Servicios</RouterLink>
@@ -72,16 +72,16 @@
         </RouterLink>
       </div>
       <div class="py-1">
-        <RouterLink to="/conocenos">conocenos</RouterLink>
+        <RouterLink to="/conocenos" @click="manageOpen">conocenos</RouterLink>
       </div>
       <div class="py-1">
-        <RouterLink to="/talento">Talento</RouterLink>
+        <RouterLink to="/talento" @click="manageOpen">Talento</RouterLink>
       </div>
       <div class="py-1">
-        <RouterLink to="/blog">Blog</RouterLink>
+        <RouterLink to="/blog" @click="manageOpen">Blog</RouterLink>
       </div>
       <div class="py-1">
-        <RouterLink to="/contacto">Contacto</RouterLink>
+        <RouterLink to="/contacto" @click="manageOpen">Contacto</RouterLink>
       </div>
     </div>
   </nav>
