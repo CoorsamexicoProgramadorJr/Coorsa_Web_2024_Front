@@ -116,16 +116,16 @@
         </div>
       </div>
 
-      <div class="flex flex-col justify-center w-6/12 h-full gap-5">
+      <div class="flex flex-col justify-center w-6/12 h-full">
         <div>
-          <h3 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold text-lg">Sede</h3>
-          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank">
+          <h3 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold">Sede</h3>
+          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="tracking-tighter lg:tracking-normal">
             Terra Business Park # 31 y 32C, 76269. Querétaro México.
           </a>
         </div>
         <div>
           <h4 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold text-lg">Warehouse</h4>
-          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank">
+          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="tracking-tighter lg:tracking-normal">
             Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.
           </a>
         </div>

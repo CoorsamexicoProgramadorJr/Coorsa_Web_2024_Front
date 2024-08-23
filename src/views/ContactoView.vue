@@ -15,10 +15,10 @@
 </script>
 <template>
   <section class="flex w-screen h-screen text-white bg-black">
-    <article class="w-1/3 h-full border-r-[4px] pt-[8vh] md:flex flex-col justify-center items-center hidden">
+    <article class="w-1/3 h-full border-r-[4px] pt-[8vh] lg:flex flex-col justify-center items-center hidden">
       <h2 class="text-5xl font-light">Zona del Mapa</h2>
     </article>
-    <article class="md:w-2/3 h-full pt-[8vh] px-[10%]">
+    <article class="lg:w-2/3 h-full pt-[8vh] md:px-[5%] px-[10%]">
       <!-- Contact form -->
       <form action="" v-if="vacancyId.length == 0" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 md:gap-x-[5%] xl:text-xl text-lg">
         <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
@@ -28,10 +28,10 @@
         <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
           <label for="phone" class="font-semibold uppercase">Teléfono</label>
           <fieldset class="flex w-full h-[40%] text-black">
-            <select name="lada" id="lada" class="md:w-[28%] w-[23%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full px-[3%] outline-none  xl:text-sm lg:text-xs">
+            <select name="lada" id="lada" class="lg:w-[28%] md:w-[35%] w-[23%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full px-[3%] outline-none  xl:text-sm lg:text-xs">
               <option v-for="state in states" :key="state.name" :value="state.lada" :title="state.name">{{ state.code }} ({{ state.lada }})</option>
             </select>
-            <input type="tel" id="phone" name="phone" placeholder="+ 1 (555) 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="md:w-[72%] w-[77%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%]">
+            <input type="tel" id="phone" name="phone" placeholder="+ 1 (555) 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="lg:w-[72%] w-[77%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%]">
           </fieldset>
         </div>
         <div class="flex flex-col col-span-2 justify-center w-full gap-[8%]">
@@ -65,7 +65,7 @@
       <!-- Vacancy Form -->
       <VacanteForm v-else :idVacancy="vacancyId"/>
 
-      <footer class="h-[20%] flex flex-col items-center">
+      <footer class="h-[20%] flex flex-col justify-around items-center">
         <div class="h-2/3 flex justify-center items-center gap-[5%]">
           <figure class="w-1/4 md:w-1/5">
             <img src="/icons/purina-color.svg" alt="Logo Purina">
@@ -80,7 +80,7 @@
             <img src="/icons/unilever-color.svg" alt="Logo Unilever" class="max-w-[65%] mx-auto">
           </figure>
         </div>
-        <p class="text-xl font-light tracking-widest uppercase h-1/3">Ellos confian en nosotros</p>
+        <p class="text-xl font-light tracking-widest uppercase max-h-[33.33%]">Ellos confian en nosotros</p>
       </footer>
     </article>
   </section>

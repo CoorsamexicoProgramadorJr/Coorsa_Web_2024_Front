@@ -6,7 +6,7 @@
       <h1 class="font-bold text-7xl">Bienvenidos a COORSA</h1>
       <h2 class="text-5xl font-semibold">Soluciones Logísticas</h2>
       <h3 class="text-4xl font-light">Un Lugar para Crecer y Desarrollarse</h3>
-      <a href="#sec-vacantes" class="w-1/4 h-[5%] bg-red-700 text-center rounded-2xl py-1 mt-[5%]">Vacantes</a>
+      <a href="#sec-vacantes" class="w-1/4 md:w-1/3 h-[5%] bg-red-700 text-center rounded-2xl md:py-0 py-1 mt-[5%] md:text-xl">Vacantes</a>
     </div>
   </section>
 </template>
