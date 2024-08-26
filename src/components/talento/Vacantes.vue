@@ -21,14 +21,14 @@
 <template>
   <section class="w-[100vw] min-h-[92vh] p-[3%]" id="sec-vacantes">
     <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold text-black uppercase lg:mb-[3%] mb-10">Vacantes</h2>
-    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-5xl lg:text-4xl text-2xl lg:space-y-0 space-y-10 text-red-700">
-      <button @click="openList(1)" class="xl:w-[20%] lg:w-[25%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold  pb-[1%] border-2 border-red-700 uppercase">
+    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-5xl lg:text-3xl text-2xl lg:space-y-0 space-y-10 text-red-700">
+      <button @click="openList(1)" class="xl:w-[20%] lg:w-[28%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold  pb-[1%] border-2 border-red-700 uppercase">
         Practicas
       </button>
-      <button @click="openList(2)" class="xl:w-[20%] lg:w-[25%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase">
+      <button @click="openList(2)" class="xl:w-[20%] lg:w-[28%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase">
         Operación
       </button>
-      <button @click="openList(3)" class="xl:w-[20%] lg:w-[25%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase">
+      <button @click="openList(3)" class="xl:w-[20%] lg:w-[28%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase lg:break-words lg:tracking-tight">
         Administrativas
       </button>
     </div>

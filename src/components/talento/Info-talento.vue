@@ -25,14 +25,14 @@
           <img src="/icons/unilever-color.svg" alt="Icono Unilever" class="md:max-h-[80%] max-h-[70%]">
         </figure>
       </div>
-      <h3 class="lg:w-[60%] w-[85%] mx-auto xl:text-4xl lg:text-3xl md:text-2xl text-center text-xl">
+      <h3 class="xl:w-[60%] w-[85%] mx-auto xl:text-4xl lg:text-3xl md:text-2xl text-center text-xl">
         <span class="font-bold uppercase">Coorsa</span> es una empresa líder en <span class="font-bold">Soluciones Logísticas</span> 
         con una sólida <span class="font-bold">presencia a nivel nacional.</span>
       </h3>
     </article>
     
     <!-- More info -->
-    <article class="w-screen text-white bg-black h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-4xl text-xl">
+    <article class="w-screen text-white bg-black h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-4xl lg:text-2xl text-xl">
       <div class="flex lg:flex-row flex-col justify-around items-center w-full h-[45%] gap-[5%]">
         <p class="lg:w-1/2">
           Estamos comprometidos a proporcionar un entorno de trabajo dinámico y enriquecedor donde cada

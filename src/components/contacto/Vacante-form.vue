@@ -32,7 +32,7 @@
   })
 </script>
 <template>
-  <form action="" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 md:gap-x-[5%] text-xl">
+  <form action="" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] text-xl">
     <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
       <label for="name" class="font-semibold uppercase">Nombre</label>
       <input type="text" id="name" name="name" placeholder="Nombre completo" class="md:h-[40%] h-1/2 md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[3%] text-black">
@@ -40,10 +40,10 @@
     <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
       <label for="phone" class="font-semibold uppercase">Teléfono</label>
       <fieldset class="flex w-full md:h-[40%] h-1/2 text-black">
-        <select name="lada" id="lada" class="md:w-[40%] w-[32%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full pl-[2%] outline-none lg:text-xl md:text-base">
+        <select name="lada" id="lada" class="lg:w-[42%] md:w-[38%] w-[32%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full lg:pl-[1%] pl-[2%] outline-none md:text-base md:tracking-tighter">
           <option v-for="state in phoneStates" :key="state.name" :value="state.lada" :title="state.name">{{ state.code }} ({{ state.lada }})</option>
         </select>
-        <input type="tel" id="phone" name="phone" placeholder="+ 1 (555) 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="md:w-[60%] w-[68%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%] md:tracking-normal tracking-widest">
+        <input type="tel" id="phone" name="phone" placeholder="000 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="lg:w-[58%] md:w-[62%] w-[68%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%] lg:tracking-tighter md:tracking-normal tracking-widest">
       </fieldset>
     </div>
     <div class="flex flex-col col-span-2 justify-center w-full gap-[8%]">

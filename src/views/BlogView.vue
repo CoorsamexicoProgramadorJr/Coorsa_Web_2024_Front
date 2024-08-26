@@ -7,7 +7,7 @@
       </svg>
     </figure>
     <h2 class="md:text-5xl text-4xl font-bold md:mb-[2%] text-center">¡Estamos Construyendo Algo Increible!</h2>
-    <p class="w-5/6 text-xl text-center md:w-4/5 md:text-2xl">
+    <p class="w-5/6 text-xl text-center lg:w-5/6 md:w-4/5 md:text-2xl">
       Nuestra sección de <span class="font-bold">Blogs</span> estará disponible pronto. Estamos trabajando arduamente para ofrecerte contenido valioso y 
       relevante. 
       <br>
