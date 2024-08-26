@@ -20,7 +20,7 @@
     </article>
     <article class="lg:w-2/3 h-full pt-[8vh] md:px-[5%] px-[10%]">
       <!-- Contact form -->
-      <form action="" v-if="vacancyId.length == 0" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] text-lg">
+      <form action="" v-if="vacancyId.length == 0" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] xl:text-xl text-lg">
         <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
           <label for="name" class="font-semibold uppercase">Nombre</label>
           <input type="text" id="name" name="name" placeholder="Nombre completo" class="md:h-[40%] h-1/2 w-[98%] md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[3%] ml-[1%] text-black">
@@ -28,10 +28,10 @@
         <div class="flex flex-col justify-center w-full md:gap-[8%] md:col-span-1 col-span-2">
           <label for="phone" class="font-semibold uppercase">Teléfono</label>
           <fieldset class="flex w-full h-[40%] text-black">
-            <select name="lada" id="lada" class="lg:w-[45%] md:w-[39%] w-[28%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full px-[2%] outline-none xl:text-sm text-base md:tracking-tighter tracking-tight">
+            <select name="lada" id="lada" class="xl:w-[40%] lg:w-[45%] md:w-[39%] w-[28%] border-l border-y focus:border-l-2 focus:border-y-2 border-red-700 md:rounded-l-xl rounded-l-full px-[2%] outline-none xl:text-lg text-base md:tracking-tighter tracking-tight">
               <option v-for="state in states" :key="state.name" :value="state.lada" :title="state.name">{{ state.code }} ({{ state.lada }})</option>
             </select>
-            <input type="tel" id="phone" name="phone" placeholder="+ 1 (555) 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="lg:w-[55%] md:w-[61%] w-[72%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%]">
+            <input type="tel" id="phone" name="phone" placeholder="+ 1 (555) 000 0000" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="xl:w-[60%] lg:w-[55%] md:w-[61%] w-[72%] border-r border-y focus:border-r-2 focus:border-y-2 border-red-700 outline-none md:rounded-r-xl rounded-r-full px-[3%]">
           </fieldset>
         </div>
         <div class="flex flex-col col-span-2 justify-center w-full gap-[8%]">
@@ -40,7 +40,7 @@
         </div>
         <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
           <label for="service" class="font-semibold uppercase">Servicio</label>
-          <select name="service" id="service" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[1%] text-black text-center uppercase lg:text-sm">
+          <select name="service" id="service" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[1%] text-black text-center uppercase xl:text-lg lg:text-sm xl:tracking-tight">
             <option value="" selected>-- Selecciona una opción --</option>
             <option value="">Warehouse</option>
             <option value="">Camiones de patio</option>
@@ -51,7 +51,7 @@
         </div>
         <div class="flex flex-col justify-center w-full gap-[8%] md:col-span-1 col-span-2">
           <label for="state" class="font-semibold uppercase">Estado</label>
-          <select name="state" id="state" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[1%] text-black text-center uppercase lg:text-sm">
+          <select name="state" id="state" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-red-700 px-[1%] text-black text-center uppercase xl:text-lg lg:text-sm">
             <option value="">-- Selecciona una opción --</option>
             <option v-for="state in states" :key="state.name" :value="state.name">{{ state.name }}</option>
           </select>

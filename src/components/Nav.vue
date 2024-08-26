@@ -107,7 +107,7 @@
           </svg>
         </RouterLink>
         <!-- Start Dropdown Services -->
-        <div class="lg:absolute lg:top-[8vh] xl:right-[2%] lg:right-0 bg-red-700 lg:h-[20vh] xl:w-[50vw] lg:w-[70vw] lg:border-t lg:border-t-white lg:divide-x divide-white hidden group-hover:flex 2xl:text-xl xl:text-lg/3 pb-1">
+        <div class="lg:absolute lg:top-[8vh] xl:right-0 lg:right-0 bg-red-700 lg:h-[20vh] xl:w-[55vw] lg:w-[70vw] lg:border-t lg:border-t-white lg:divide-x divide-white hidden group-hover:flex 2xl:text-xl xl:text-lg/3 pb-1">
           <div class="lg:w-1/5 h-[100%] normal-case px-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-1/3">
