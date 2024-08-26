@@ -1,7 +1,7 @@
 export const directivos = [
   {
     nombre: 'Renato Ortiz',
-    puesto: 'Ceo',
+    puesto: 'CEO',
     imagen: 'https://storage.googleapis.com/coorsa-mexico-web/img/Renato.jpg'
   },
   {

@@ -2,7 +2,7 @@
 <template>
   <section class="w-screen md:h-[130vh] h-[92vh] text-white bg-black">
     <article class="w-full h-[45%] pt-[5%] px-[3%] lg:pl-[5%] flex flex-col justify-center lg:block">
-      <h2 class="font-bold uppercase lg:text-6xl md:text-5xl text-4xl lg:ml-[5%] mb-[5%] text-center lg:text-left">
+      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-6xl md:text-5xl text-4xl lg:ml-[5%] mb-[5%] text-center lg:text-left">
         Misión
       </h2>
       <p class="lg:w-2/3 md:w-11/12 xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:ml-[2%] mx-auto font-light lg:text-left text-center">
@@ -14,7 +14,7 @@
       </p>
     </article>
     <article class="w-full h-[45%] pt-[5%] lg:pr-[5%] flex lg:block flex-col justify-center">
-      <h2 class="font-bold uppercase lg:text-6xl md:text-5xl text-4xl lg:mr-[7%] mb-[5%] lg:text-right text-center">
+      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-6xl md:text-5xl text-4xl lg:mr-[7%] mb-[5%] lg:text-right text-center">
         Visión
       </h2>
       <p class="lg:w-2/3 md:w-10/12 xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:mr-[2%] mx-auto float-right font-light lg:text-left text-center">
