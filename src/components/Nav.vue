@@ -87,12 +87,10 @@
   </nav>
 
   <!-- Desktop Nav -->
-  <nav class="bg-red-700 w-screen h-[8vh] lg:flex justify-between items-center fixed top-0 left-0 right-0 px-[3%] hidden z-[2]">
+  <nav class="bg-red-700 w-screen h-[8vh] lg:flex justify-between items-center fixed top-0 left-0 right-0 px-[3%] hidden z-[2] opacity-95">
     <div class="h-full xl:w-[15%] lg:w-[20%] flex justify-center items-center">
       <ApplicationMark class="text-white lg:w-[75%]"/>
     </div>
-
-    <!-- Links for desktop devices -->
     <div class=" xl:w-[60%] lg:w-[70%] lg:h-[100%] gap-[2%] text-white uppercase tracking-wide xl:text-xl lg:text lg:flex hidden">
       <div class="flex items-center justify-center flex-1">
         <RouterLink to="/" active-class="underline underline-offset-8" class="max-h-full lg:hover:underline lg:hover:underline-offset-8">
@@ -107,7 +105,7 @@
           </svg>
         </RouterLink>
         <!-- Start Dropdown Services -->
-        <div class="lg:absolute lg:top-[8vh] xl:right-0 lg:right-0 bg-red-700 lg:h-[20vh] xl:w-[55vw] lg:w-[70vw] lg:border-t lg:border-t-white lg:divide-x divide-white hidden group-hover:flex 2xl:text-xl xl:text-lg/3 pb-1">
+        <div class="lg:absolute lg:top-[8vh] xl:right-0 lg:right-0 bg-red-700 lg:h-[20vh] xl:w-[55vw] lg:w-[70vw] lg:border-t lg:border-t-white lg:divide-x divide-white hidden group-hover:flex 2xl:text-xl xl:text-lg/3 pb-1 transition ease-in-out delay-150 duration-500">
           <div class="lg:w-1/5 h-[100%] normal-case px-[1%] hover:bg-red-800">
             <a href="" class="h-[100%] flex flex-col justify-around items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-1/3">

@@ -40,7 +40,6 @@
   })
 
   Fancybox.bind("[data-fancybox]", {})
-
 </script>
 <template>
   <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] relative lg:block sm:hidden z-[2]">
@@ -80,7 +79,7 @@
             </svg>
           </a>
         </div>
-        <button class="uppercase bg-red-700 xl:w-[40%] lg:w-2/3 h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
+        <RouterLink to="/contacto" class=" text-center lg:py-1 uppercase bg-red-700 xl:w-[40%] lg:w-2/3 h-[20%] rounded-xl hover:bg-red-800">Contacto</RouterLink>
       </div>
     </article>
     <!-- Lower footer -->

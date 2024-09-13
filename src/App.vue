@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <main class="z-[3]">
+  <main class="z-[3] overflow-x-hidden">
     <Nav :currentRoute="actualRoute"/>
     <RouterView />
     <PiePagina :currentRoute="actualRoute"/>
