@@ -42,7 +42,7 @@
   Fancybox.bind("[data-fancybox]", {})
 </script>
 <template>
-  <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] relative lg:block sm:hidden z-[2]">
+  <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] relative lg:block mobile-l:hidden z-[2]">
     <!-- Upper footer -->
     <article class="flex justify-around items-center gap-[1%] w-full h-2/3">
       <figure class="lg:w-2/6">
@@ -106,7 +106,7 @@
   </footer>
   
   <!-- Mobile footer -->
-  <footer class="w-screen h-[40vh] bg-black border-t text-white z-[2] relative lg:hidden block">
+  <footer class="w-screen h-[42vh] bg-black border-t text-white z-[2] relative lg:hidden block p-1">
     <!-- Upper footer -->
     <div class="flex justify-around items-center gap-[1%] w-full h-3/6">
       <div class="flex flex-col items-center justify-around w-3/12 h-full py-[1%] font-semibold">
@@ -118,13 +118,13 @@
       <div class="flex flex-col justify-center w-6/12 h-full">
         <div>
           <h3 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold">Sede</h3>
-          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="tracking-tighter lg:tracking-normal">
+          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="text-sm tracking-tighter sm:text-base lg:tracking-normal">
             Terra Business Park # 31 y 32C, 76269. Querétaro México.
           </a>
         </div>
         <div>
           <h4 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold text-lg">Warehouse</h4>
-          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="tracking-tighter lg:tracking-normal">
+          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="text-sm tracking-tighter sm:text-base lg:tracking-normal">
             Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.
           </a>
         </div>
@@ -143,7 +143,7 @@
             </svg>
           </a>
         </div>
-        <button class="uppercase bg-red-700 md:w-[50%] w-[70%] h-[20%] rounded-xl hover:bg-red-800">Contacto</button>
+        <button class="uppercase bg-red-700 md:w-[50%] w-[80%] sm:w-[70%] h-[20%] rounded-xl hover:bg-red-800 text-sm sm:text-base px-2">Contacto</button>
       </div>
     </div>
 
@@ -167,7 +167,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center h-1/6">
-      <p class="text-base tracking-widest md:text-lg">
+      <p class="text-base tracking-widest text-center md:text-lg">
         &#xA9; 2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 
       </p>
     </div>

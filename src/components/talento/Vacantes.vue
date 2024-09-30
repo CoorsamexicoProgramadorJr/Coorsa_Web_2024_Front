@@ -1,15 +1,9 @@
 <script setup>
-  import { useRouter } from 'vue-router'
   import { useCategoryStore } from '@/stores/categories'
   import { useVacancyStore } from '@/stores/vacancies'
 
   const categoryStore = useCategoryStore()
   const vacancyStore = useVacancyStore()
-  const router = useRouter()
-  
-  const apply = (id) => {
-    router.push({ name: 'contacto', params: { vacancyId: id}})
-  }
 </script>
 <template>
   <section class="w-[100vw] min-h-[92vh] p-[3%]" id="sec-vacantes">
@@ -22,20 +16,20 @@
 
     <div v-if="vacancyStore.showVacanciesList && vacancyStore.vacancies.length > 0" class="m-[5%] flex flex-col items-center">
       <details class="w-[90%] mb-[2%] flex flex-col items-center" v-for="vacancy in vacancyStore.vacancies" :key="vacancy.id">
-        <summary class="w-full lg:text-3xl text-2xl border-b-2 border-red-700 pb-[1%] text-red-700" open>
+        <summary class="w-full lg:text-3xl text-2xl border-b-2 border-red-700 pb-[1%] text-red-700 hover:cursor-pointer" open>
           <span class="font-bold text-black">{{ vacancy.position }}</span>
         </summary>
         <div class="py-[2%] px-[4%]">
           <dl class="text-lg xl:text-2xl lg:text-xl">
-            <div class="flex gap-[2%] items-center my-[1%]">
+            <div class="flex flex-col sm:flex-row gap-[2%] sm:items-center my-[1%]">
               <dt class="font-semibold uppercase">Ubicación:</dt>
               <dd class="font-light">{{ vacancy.location }}</dd>
             </div>
-            <div class="flex gap-[2%] items-center my-[2%]">
+            <div class="flex flex-col sm:flex-row gap-[2%] sm:items-center my-[2%]">
               <dt class="font-semibold uppercase">Descripción:</dt>
               <dd class="font-light">{{ vacancy.description }}</dd>
             </div>
-            <div class="flex gap-[2%] items-center my-[2%]">
+            <div class="flex flex-col sm:flex-row gap-[2%] sm:items-center my-[2%]">
               <dt class="font-semibold uppercase">Horario Laboral:</dt>
               <dd class="font-light">{{ vacancy.schedule }}</dd>
             </div>
@@ -51,7 +45,7 @@
             </div>
           </dl>
         </div>
-        <button @click="apply(vacancy.id)" class="w-1/3 h-10 mx-auto font-bold text-white uppercase bg-red-700 md:w-1/5 rounded-xl xl:text-xl">
+        <button @click="vacancyStore.applyVacancy(vacancy)" class="w-1/3 h-10 mx-auto font-bold text-white uppercase bg-red-700 md:w-1/5 rounded-xl xl:text-xl">
           Postulate
         </button>
       </details>

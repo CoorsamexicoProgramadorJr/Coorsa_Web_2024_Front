@@ -1,8 +1,12 @@
 import { ref } from 'vue'
 import { defineStore } from "pinia"
+import { useRouter } from 'vue-router'
 import ClientService from '@/services/ClientService'
+import { useApplicationStore } from './applications'
 
 export const useVacancyStore = defineStore('vacancies', () => {
+  const router = useRouter()
+  const applicationStore = useApplicationStore()
   const showVacanciesList = ref(false)
   const vacancies = ref([])
   
@@ -21,10 +25,18 @@ export const useVacancyStore = defineStore('vacancies', () => {
     chgVacancy()
   }
 
+  const applyVacancy = (vacancy) => {
+    applicationStore.applicationForm.vacancy_id = vacancy.id
+    applicationStore.applicationForm.category_id = vacancy.category_id
+    applicationStore.resetErrors()
+    router.push({ name: 'contacto', params: { vacancyId: vacancy.id}})
+  }
+
   return {
     showVacanciesList,
     vacancies,
     chgVacancy,
-    openList
+    openList,
+    applyVacancy
   }
 })
