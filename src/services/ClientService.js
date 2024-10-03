@@ -23,6 +23,13 @@ export default {
   postConsult(data){
     return api.post('/consults', data)
   },
+  postCv(data){
+    return api.post('/curriculums', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  },
   postApplication(data){
     return api.post('/applications', data)
   }

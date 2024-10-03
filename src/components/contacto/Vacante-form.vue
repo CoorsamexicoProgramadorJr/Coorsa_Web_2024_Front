@@ -4,6 +4,7 @@
   import { useCategoryStore } from '@/stores/categories'
   import { useContactStore } from '@/stores/contact'
   import { useApplicationStore } from '@/stores/applications'
+  import ContactAlert from '../ContactAlert.vue'
 
   const props = defineProps({
     idVacancy: {
@@ -22,6 +23,7 @@
   })
 </script>
 <template>
+  <ContactAlert v-if="appStore.alertStatus" alert-type="postulacion"/>
   <form @submit.prevent="appStore.submitApplication" class="h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-9 lg:gap-x-[3%] md:gap-x-[5%]  2xl:text-2xl xl:text-xl text-lg" :class="{'gap-y-3' : Object.keys(appStore.errors).length > 0}" novalidate>
     <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
       <label for="name" class="mb-1 font-semibold uppercase">Nombre</label>
@@ -76,15 +78,15 @@
       </p>
     </div>
     <div class="flex flex-col items-center justify-around w-full col-span-2 row-span-1 md:row-span-2">
-      <label for="cv" class="md:w-2/3 w-3/4 font-semibold text-center bg-red-700 hover:bg-red-800 rounded-full md:h-[20%] max-h-[50%] flex justify-center items-center gap-2 py-1">
+      <label for="cv" class="md:w-2/3 w-3/4 font-semibold text-center bg-red-700 hover:bg-red-800 rounded-full md:h-[20%] max-h-[50%] flex justify-center items-center gap-2 py-1" :class="{ 'opacity-75' : appStore.uploading }">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
         </svg>
         Adjunta tu CV
       </label>
-      <input type="file" @change="manageCv" name="cv" id="cv" accept=".pdf, .doc, .docx" class="w-3/4 mx-auto text-base text-center file:hidden file:bg-red-700">
+      <input type="file" @change="appStore.manageCv" name="cv" id="cv" accept=".pdf, .doc, .docx" class="w-3/4 mx-auto text-base text-center file:hidden file:bg-red-700">
     </div>
-    <button type="submit" :disabled="appStore.sending" class="col-span-2 py-1 my-auto font-bold uppercase bg-red-700 rounded-full hover:bg-red-800 md:rounded-xl 2xl:h-1/2 md:h-2/5">
+    <button type="submit" :disabled="appStore.sending || appStore.uploading" class="col-span-2 py-1 my-auto font-bold uppercase bg-red-700 rounded-full hover:bg-red-800 md:rounded-xl 2xl:h-1/2 md:h-2/5">
       Postularse
     </button>
   </form>
