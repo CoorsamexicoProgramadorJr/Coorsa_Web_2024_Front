@@ -20,8 +20,7 @@
 </script>
 <template>
   <section class="flex w-screen text-white bg-black md:h-screen h-[120vh]">
-    <article class="w-1/3 h-full border-r-[4px] pt-[8vh] lg:flex flex-col justify-center items-center hidden">
-      <h2 class="text-5xl font-light">Zona del Mapa</h2>
+    <article class="w-1/3 h-full border-r bg-[url('https://storage.googleapis.com/coorsa-mexico-web/img/mapaMovil.svg')] bg-cover bg-center hidden lg:block">
     </article>
     <article class="lg:w-2/3 h-full pt-[8vh] md:px-[5%] px-[10%]">
       <!-- Contact form -->

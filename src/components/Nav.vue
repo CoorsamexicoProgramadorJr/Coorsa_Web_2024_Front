@@ -42,7 +42,7 @@
       </div>
       <div class="flex justify-end py-1">
         <RouterLink to="/servicios" class="">Servicios</RouterLink>
-        <button @click="manageSubMenu" class="ml-[38%] md:ml-[40%]">
+        <button @click="manageSubMenu" class="ml-[32%] md:ml-[40%]">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
             <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
           </svg>
@@ -82,6 +82,9 @@
       </div>
       <div class="py-1">
         <RouterLink to="/contacto" @click="manageOpen">Contacto</RouterLink>
+      </div>
+      <div class="py-1">
+        <RouterLink :to="{ name: 'login'}" @click="manageOpen">Administración</RouterLink>
       </div>
     </div>
   </nav>
@@ -185,7 +188,11 @@
         <RouterLink to="/contacto" active-class="underline underline-offset-8" class="hover:underline hover:underline-offset-8">Contacto</RouterLink>
       </div>
       <div class="flex items-center justify-center flex-1">
-        <RouterLink to="" class="hover:underline hover:underline-offset-8">ERP</RouterLink>
+        <RouterLink :to="{ name: 'login' }">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-1/2 mx-auto">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </RouterLink>
       </div>
     </div>
   </nav>

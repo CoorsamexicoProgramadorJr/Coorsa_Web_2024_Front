@@ -5,6 +5,7 @@ import ServiciosView from '@/views/ServiciosView.vue'
 import TalentoView from '@/views/TalentoView.vue'
 import BlogView from '@/views/BlogView.vue'
 import ContactoView from '@/views/ContactoView.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,8 +39,24 @@ const router = createRouter({
       path: '/contacto/:vacancyId?',
       name: 'contacto',
       component: ContactoView,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/panel-principal',
+      name: 'panel principal',
+      component: () => import('@/views/PrincipalPanelView.vue'),
     }
   ]
 })
 
+
+router.beforeEach((to, from) => {
+  if(localStorage.length == 0 && to.name == 'panel principal'){
+    return '/login'
+  }
+})
 export default router

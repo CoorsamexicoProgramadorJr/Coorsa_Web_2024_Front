@@ -32,5 +32,15 @@ export default {
   },
   postApplication(data){
     return api.post('/applications', data)
+  },
+  attempLogin(data){
+    return api.post('user/login', data)
+  },
+  attemptLogOut(){
+    return api.post('user/logout', null, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
   }
 }
