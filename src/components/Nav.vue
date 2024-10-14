@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from 'vue' 
+  import { ref, watch } from 'vue' 
   import { RouterLink } from 'vue-router'
   import ApplicationMark from '@/components/icons/ApplicationMark.vue'
   import Logo from '@/components/icons/Logo.vue'
@@ -96,7 +96,7 @@
     </div>
     <div class=" xl:w-[60%] lg:w-[70%] lg:h-[100%] gap-[2%] text-white uppercase tracking-wide xl:text-xl lg:text lg:flex hidden">
       <div class="flex items-center justify-center flex-1">
-        <RouterLink to="/" active-class="underline underline-offset-8" class="max-h-full lg:hover:underline lg:hover:underline-offset-8">
+        <RouterLink to="/" active-class="underline underline-offset-8" class="max-h-full lg:hover:underline lg:hover:underline-offset-8" :class="{ 'no-underline' : props.currentRoute != 'start' }">
           Inicio
         </RouterLink>
       </div>

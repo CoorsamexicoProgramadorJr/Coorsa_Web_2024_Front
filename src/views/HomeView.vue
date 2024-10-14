@@ -1,15 +1,22 @@
 <script setup>
-  import Intro from '@/components/inicio/Intro.vue'
-  import ServiciosSeccion from '@/components/inicio/ServiciosSeccion.vue'
-  import TerritorioSeccion from '@/components/inicio/TerritorioSeccion.vue'
-  import AliadosSeccion from '@/components/inicio/AliadosSeccion.vue'
-  import TestimoniosSeccion from '@/components/inicio/TestimoniosSeccion.vue'
+  import { watch, ref, onMounted } from 'vue'
+  import { RouterView, useRoute, useRouter } from 'vue-router'
+  import Nav from '@/components/Nav.vue'
+  import PiePagina from '@/components/PiePagina.vue'
+
+  const route = useRoute()
+  const router = useRouter()
+  const actualRoute = ref('')
+
+  watch(route, () =>{
+    actualRoute.value = route.name
+  })
 </script>
 
 <template class="relative z-1">
-  <Intro />
-  <ServiciosSeccion />
-  <TerritorioSeccion />
-  <AliadosSeccion />
-  <TestimoniosSeccion />
+  <main class="z-[3] overflow-x-hidden">
+    <Nav :currentRoute="actualRoute"/>
+    <router-view></router-view>
+    <PiePagina :currentRoute="actualRoute"/>
+  </main>
 </template>

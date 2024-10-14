@@ -2,16 +2,38 @@ import api from "@/api/axios"
 
 export default {
   getCategories(){
-    return api.get('/categories')
+    return api('/categories')
   },
+  // Vacancies endpoints
   getVacancies(){
-    return api.get('/vacancies')
+    return api('/vacancies')
   },
   getVacanciesByCategory(id){
-    return api.get('/categories/' + id + '/vacancies')
+    return api('/categories/' + id + '/vacancies')
   },
   getVacancyById(id){
-    return api.get('/vacancies/' + id)
+    return api('/vacancies/' + id)
+  },
+  postNewVacancy(data){
+    return api.post('vacancies', data, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
+  updateVacancy(id, data){
+    return api.put('vacancies/' + id, data, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
+  deleteVacancy(id){
+    return api.post('vacancies/' + id, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
   },
   //States
   getStates(){
@@ -38,6 +60,13 @@ export default {
   },
   attemptLogOut(){
     return api.post('user/logout', null, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
+  getUser(id){
+    return api('user/' + id, {
       headers: {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
       }

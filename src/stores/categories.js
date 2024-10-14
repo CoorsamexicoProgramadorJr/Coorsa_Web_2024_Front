@@ -1,11 +1,11 @@
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import { defineStore } from "pinia"
 import ClientService from '@/services/ClientService'
 
 export const useCategoryStore = defineStore('categories', () => {
   const categories = ref([])
 
-  onMounted(() => {
+  onBeforeMount(() => {
     getCategories()
   })
 

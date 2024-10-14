@@ -31,9 +31,10 @@ export const useLoginStore = defineStore('login', () => {
         console.log(response)
         userToken.value = response.data.access_token
         saveToLocalStorage('Bearer Token', userToken.value)
+        saveToLocalStorage('User_id', response.data.user.id)
         resetForm()
         resetErrors()
-        router.push({ name: 'panel principal'})
+        router.push('/panel-principal')
       })
       .catch(error => {
         if(error.status == 400){
@@ -50,7 +51,7 @@ export const useLoginStore = defineStore('login', () => {
       .finally(() => {
         sending.value = false
         console.log(errors)
-        console.log(userToken.value)
+        console.log(user)
       })
   }
 
@@ -74,6 +75,7 @@ export const useLoginStore = defineStore('login', () => {
       .then(response => {
         console.log(response)
         removeFromLocalStorage('Bearer Token')
+        removeFromLocalStorage('User_id')
         router.push({ name: 'login' })
       })
       .catch(error => {
