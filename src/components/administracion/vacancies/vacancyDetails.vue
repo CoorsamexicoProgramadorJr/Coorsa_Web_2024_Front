@@ -10,44 +10,50 @@
 </script>
 
 <template>
-  <div class="absolute top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black/50">
-    <div class="w-[85%] h-[92vh] bg-white z-[3] relative rounded-2xl p-4 overflow-y-auto">
-      <button @click="newVacancyStore.manageVacancyDetails" class="fixed flex items-center justify-center text-blue-900 right-[8%] top-[4vh] z-[4]">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 stroke-2">
+  <div class="absolute top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black/50 lg:w-3/4 lg:ml-[25%] lg:z-[1]">
+    <div class="w-[85%] max-h-[92vh] bg-white z-[3] relative rounded-2xl p-4 overflow-y-auto md:w-[80%]">
+      <button @click="newVacancyStore.manageVacancyDetails" class="float-right flex items-center justify-center text-blue-900 z-[4]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 stroke-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
-      <h3 class="text-3xl font-bold text-blue-900">Detalles de la vacante</h3>
-      <form class="relative flex flex-col my-4 space-y-2" @submit.prevent="newVacancyStore.updateVacancy" novalidate>
-        <div class="flex items-center justify-between">
-          <label class="text-lg font-semibold text-gray-600" for="status">Estatus</label>
-          <select name="status" v-model="newVacancyStore.vacancy.status" id="status" class="py-1 text-base text-center uppercase border-b border-gray-600 outline-none w-52">
+      <h3 class="text-3xl font-bold text-blue-900 lg:text-4xl">Detalles de la vacante</h3>
+      <form class="relative flex flex-col my-2 space-y-2" @submit.prevent="newVacancyStore.updateVacancy" novalidate>
+        <div class="flex items-center gap-4">
+          <label class="text-lg font-semibold text-gray-600 lg:text-xl" for="status">Estatus</label>
+          <select name="status" v-model="newVacancyStore.vacancy.status" id="status" class="flex-1 py-1 text-base text-center uppercase border-b border-gray-600 outline-none">
             <option value="0">Inactiva</option>
             <option value="1">Activa</option>
           </select>
         </div>
-        <div class="flex flex-col">
-          <label class="text-lg font-semibold text-gray-600" for="position">Posición</label>
-          <input type="text" v-model="newVacancyStore.vacancy.position" placeholder="Practicante de Gerente" name="position" id="position" class="my-1 border-b border-gray-600 outline-none">
+        <div>
+          <div class="flex flex-col md:gap-4 md:flex-row md:items-center">
+            <label class="text-lg font-semibold text-gray-600 lg:text-xl" for="position">Posición</label>
+            <input type="text" v-model="newVacancyStore.vacancy.position" placeholder="Practicante de Gerente" name="position" id="position" class="flex-1 my-1 border-b border-gray-600 outline-none">
+          </div>
           <p v-if="Object.keys(newVacancyStore.vacancyErrors).length != 0 && Object.keys(newVacancyStore.vacancyErrors).includes('position')" class="text-sm text-red-700">
             {{ newVacancyStore.vacancyErrors.position[0] }}
           </p>
         </div>
-        <div class="flex flex-col">
-          <label class="text-lg font-semibold text-gray-600" for="location">Ubicación</label>
-          <input type="text" v-model="newVacancyStore.vacancy.location" placeholder="Querétaro" id="location" name="location" class="my-1 border-b border-gray-600 outline-none">
+        <div>
+          <div class="flex flex-col md:gap-4 md:flex-row md:items-center">
+            <label class="text-lg font-semibold text-gray-600 lg:text-xl" for="location">Ubicación</label>
+            <input type="text" v-model="newVacancyStore.vacancy.location" placeholder="Querétaro" id="location" name="location" class="flex-1 my-1 border-b border-gray-600 outline-none">
+          </div>
           <p v-if="Object.keys(newVacancyStore.vacancyErrors).length != 0 && Object.keys(newVacancyStore.vacancyErrors).includes('location')" class="text-sm text-red-700">
             {{ newVacancyStore.vacancyErrors.location[0] }}
           </p>
         </div>
-        <div class="flex flex-col">
-          <label for="category" class="text-lg font-semibold text-gray-600">Categoria</label>
-          <select v-model="newVacancyStore.vacancy.category_id" name="category" id="category" class="py-1 text-base text-center uppercase border-b border-gray-600 outline-none">
-            <option value="">-- SELECCIONA UNA OPCIÓN --</option>
-            <option :value="category.id" v-for="category in categoryStore.categories" :key="category.id">
-              {{ category.name }}
-            </option>
-          </select>
+        <div>
+          <div class="flex flex-col md:flex-row md:gap-4 md:items-center">
+            <label for="category" class="text-lg font-semibold text-gray-600 lg:text-xl">Categoria</label>
+            <select v-model="newVacancyStore.vacancy.category_id" name="category" id="category" class="flex-1 py-1 text-base text-center uppercase border-b border-gray-600 outline-none">
+              <option value="">-- SELECCIONA UNA OPCIÓN --</option>
+              <option :value="category.id" v-for="category in categoryStore.categories" :key="category.id">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
           <p v-if="Object.keys(newVacancyStore.vacancyErrors).length != 0 && Object.keys(newVacancyStore.vacancyErrors).includes('category_id')" class="text-sm text-red-700">
             {{ newVacancyStore.vacancyErrors.category_id[0] }}
           </p>

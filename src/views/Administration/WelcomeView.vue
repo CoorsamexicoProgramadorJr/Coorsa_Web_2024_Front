@@ -2,7 +2,7 @@
   import ApplicationMark from '@/components/icons/ApplicationMark.vue'
 </script>
 <template>
-  <section class="h-screen pt-[8vh] p-4">
+  <section class="h-screen md:w-3/4 pt-[8vh] p-4 md:mx-auto lg:ml-[25%] relative">
     <h2 class="my-4 text-2xl font-bold">
       <span class="text-4xl italic font-extrabold text-blue-900">Bienvenido</span> al panel de Administración
     </h2>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </article>
-    <footer class="absolute bottom-0 right-0 flex flex-col items-center w-full gap-5 mb-5 text-blue-900">
+    <footer class="absolute bottom-0 right-0 flex flex-col items-center w-full gap-5 mb-5 text-blue-900 lg:justify-around lg:flex-row">
       <h5 class="text-lg italic">"Haciendo de lo bueno algo mejor"</h5>
       <ApplicationMark class="w-60"/>
     </footer>

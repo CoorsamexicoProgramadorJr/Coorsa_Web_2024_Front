@@ -76,6 +76,7 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
   }
 
   async function updateVacancy(){
+    resetVacancyErrors()
     await ClientService.updateVacancy(vacancy.id, vacancy)
       .then(response => {
         console.log(response)
@@ -105,6 +106,7 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
     submitNewVacancy,
     resetNewVacancyForm,
     manageNewForm,
+    resetVacancyErrors,
     manageNotificationAlert,
     manageVacancyDetails,
     selectVacancy,
