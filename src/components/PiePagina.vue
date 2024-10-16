@@ -83,7 +83,7 @@
       </div>
     </article>
     <!-- Lower footer -->
-    <article class="flex items-center w-full h-1/3 gap-[1%]">
+    <article class="flex items-center w-full h-1/3 gap-[1%] border-t border-red-700">
       <div class="flex items-center justify-center border-r border-red-700 h-2/3 w-[66.66%]">
         <p class="tracking-widest xl:text-xl lg:text-lg">
           &#xA9; 2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 

@@ -1,28 +1,23 @@
 <script setup></script>
 <template>
-  <section class="w-screen md:h-[130vh] h-[92vh] text-white bg-black">
-    <article class="w-full h-[45%] pt-[5%] px-[3%] lg:pl-[5%] flex flex-col justify-center lg:block">
-      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-6xl md:text-5xl text-4xl lg:ml-[5%] mb-[5%] text-center lg:text-left">
+  <section class="w-screen md:h-[110vh] h-[92vh] text-white bg-black">
+    <article class="w-full h-[45%] p-10 flex flex-col lg:flex-row justify-center lg:items-center">
+      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-8xl md:text-5xl text-4xl mb-[5%] lg:mb-0 text-center flex-1">
         Misión
       </h2>
-      <p class="lg:w-2/3 md:w-11/12 xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:ml-[2%] mx-auto font-light lg:text-left text-center">
-        EFICIENTAR LOS PROCESOS DE LAS CADENAS DE SUMINISTRO, A TRAVÉS DE SERVICIOS DE ALTA CALIDAD QUE GENEREN AMBIENTES DE INNOVACIÓN 
-        LOGÍSTICA.
-      </p>
-      <p class="mt-[5%] lg:ml-[10%] mx-4 xl:text-4xl lg:text-3xl text-red-700 italic font-normal text-center lg:text-left text-xl">
-        HACIENDO DE LO BUENO, ALGO MEJOR
+      <p class="flex-1 mx-auto text-xl font-light text-center lg:w-1/2 md:w-11/12 xl:text-4xl lg:text-4xl md:text-2xl lg:text-left">
+        Eficientar los procesos de las cadenas de suministro, a través de servicios de alta calidad que generen ambientes de innovación logística.
       </p>
     </article>
-    <article class="w-full h-[45%] pt-[5%] lg:pr-[5%] flex lg:block flex-col justify-center">
-      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-6xl md:text-5xl text-4xl lg:mr-[7%] mb-[5%] lg:text-right text-center">
+    <article class="w-full h-[45%] p-10 flex lg:flex-row lg:items-center flex-col justify-center">
+      <p class="flex-1 float-right mx-auto text-xl font-light text-center lg:w-1/2 md:w-10/12 xl:text-4xl lg:text-4xl md:text-2xl lg:text-left">
+        Ser para 2026 la empresa líder en soluciones logísticas en el centro y norte de México, integrados por un equipo de personas líderes en la 
+        industria que nos conduzcan a la innovación de procesos y herramientas en las cadenas de suministro, convirtiéndonos en socios estratégicos 
+        de nuestros clientes.
+      </p>
+      <h2 class="font-bold uppercase 2xl:text-7xl lg:text-8xl md:text-5xl text-4xl mb-[5%] text-center flex-1 max-w-[45%] lg:text-center">
         Visión
       </h2>
-      <p class="lg:w-2/3 md:w-10/12 xl:text-4xl lg:text-3xl md:text-2xl text-xl lg:mr-[2%] mx-auto float-right font-light lg:text-left text-center">
-        SER PARA 2026 LA EMPRESA LÍDER EN SOLUCIONES LOGÍSTICAS EN EL CENTRO Y NORTE DE MÉXICO, INTEGRADOS POR UN EQUIPO DE PERSONAS LÍDERES
-        EN LA INDUSTRIA QUE NOS CONDUZCAN A LA INNOVACIÓN DE PROCESOS Y HERRAMIENTAS EN LAS CADENAS DE SUMINISTRO, CONVIRTIÉNDONOS EN 
-        SOCIOS ESTRATÉGICOS DE NUESTROS CLIENTES.
-      </p>
-      <div class="clear-both"></div>
     </article>
   </section>
 </template>

@@ -57,6 +57,9 @@ const router = createRouter({
       path: '/panel-principal',
       name: 'panel principal',
       component: () => import('@/views/PrincipalPanelView.vue'),
+      beforeEnter: (to, from) => {
+        if(localStorage.length == 0) return '/login'
+      },
       children: [
         {
           path: '',
@@ -86,12 +89,5 @@ const router = createRouter({
       ]
     }
   ]
-})
-
-
-router.beforeEach((to, from) => {
-  if(localStorage.length == 0 && to.name == 'panel principal'){
-    return '/login'
-  }
 })
 export default router

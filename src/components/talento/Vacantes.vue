@@ -7,9 +7,9 @@
 </script>
 <template>
   <section class="w-[100vw] min-h-[92vh] p-[3%]" id="sec-vacantes">
-    <h2 class="lg:text-6xl md:text-5xl text-4xl font-bold text-black uppercase lg:mb-[3%] mb-10">Vacantes</h2>
+    <h2 class="mb-10 text-4xl font-bold text-black uppercase lg:text-6xl md:text-5xl lg:mb-20 lg:text-center">Nuestras Vacantes</h2>
     <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-4xl lg:text-3xl text-2xl lg:space-y-0 space-y-10 text-red-700">
-      <button v-for="category in categoryStore.categories" :key="category.id" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-[28%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase lg:break-words lg:tracking-tight">
+      <button v-for="category in categoryStore.categories" :key="category.id" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-1/4 w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase lg:break-words lg:tracking-tight transition ease-in-out delay-75 hover:scale-110">
         {{ category.name }}
       </button>
     </div>

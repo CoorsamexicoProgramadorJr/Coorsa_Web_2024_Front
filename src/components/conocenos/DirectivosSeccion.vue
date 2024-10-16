@@ -52,7 +52,7 @@
     --f-button-bg: white;
     --f-button-border-radius: 50%; 
   }
-
+  
   @media screen and (max-width: 640px){
     #directivosCarousel {
       --f-carousel-spacing: 2%;
