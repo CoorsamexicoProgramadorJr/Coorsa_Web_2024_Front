@@ -1,23 +1,29 @@
 <script setup>
-  import { onBeforeMount, ref } from 'vue'
+  import { onBeforeMount, onUnmounted, ref } from 'vue'
   import { useVacancyStore } from '@/stores/vacancies'
-  import { useLoginStore } from '@/stores/login'
   import { useNewVacancyStore } from '@/stores/administration/newVacancy'
+  import { useAlertNotificationStore } from '@/stores/alertNotification'
   import NewVacancyForm from '@/components/administracion/vacancies/NewVacancyForm.vue'
   import vacancyDetails from '@/components/administracion/vacancies/vacancyDetails.vue'
   import notificationAlert from '@/components/administracion/notificationAlert.vue'
 
   const vacancyStore = useVacancyStore()
   const newVacancyStore = useNewVacancyStore()
+  const alertNotificationStore = useAlertNotificationStore()
 
   onBeforeMount(() => {
     vacancyStore.getAllVacancies()
+  })
+
+  onUnmounted(() => {
+    if(newVacancyStore.visibleNewForm) newVacancyStore.manageNewForm()
+    if(newVacancyStore.vacancyDetails) newVacancyStore.manageVacancyDetails()
   })
 </script>
 
 <template>
   <section class="h-screen pt-[8vh] p-3 lg:ml-[25%] lg:w-3/4 lg:pt-5">
-    <notificationAlert v-if="newVacancyStore.showAlert" type="success">{{ newVacancyStore.alertMsg }}</notificationAlert>
+    <notificationAlert v-if="alertNotificationStore.showAlert" />
 
     <h2 class="my-4 text-2xl font-bold text-center text-blue-900 uppercase lg:text-3xl">Administración de Vacantes</h2>
     <h3 class="mt-8 text-xl font-semibold lg:text-2xl">Vacantes Disponibles</h3>

@@ -1,22 +1,15 @@
 <script setup>
-  import { watch, ref, onMounted } from 'vue'
-  import { RouterView, useRoute, useRouter } from 'vue-router'
-  import Nav from '@/components/Nav.vue'
+  import { RouterView } from 'vue-router'
+  import DeskNav from '@/components/DeskNav.vue'
+  import MobilNav from '@/components/MobilNav.vue'
   import PiePagina from '@/components/PiePagina.vue'
-
-  const route = useRoute()
-  const router = useRouter()
-  const actualRoute = ref('')
-
-  watch(route, () =>{
-    actualRoute.value = route.name
-  })
 </script>
 
 <template class="relative z-1">
   <main class="z-[3] overflow-x-hidden">
-    <Nav :currentRoute="actualRoute"/>
+    <MobilNav />
+    <DeskNav />
     <router-view></router-view>
-    <PiePagina :currentRoute="actualRoute"/>
+    <PiePagina />
   </main>
 </template>

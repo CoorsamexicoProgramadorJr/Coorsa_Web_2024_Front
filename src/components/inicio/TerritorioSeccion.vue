@@ -1,19 +1,21 @@
 <script setup>
   import CoorsaLogo from '@/components/icons/CoorsaLogo.vue'
+  import Map from '@/components/icons/Map.vue'
 </script>
 <template>
-  <section class="w-screen h-[92vh] relative hidden md:block">
-    <header class="absolute md:right-[10%] top-[8%] right-0">
-      <h2 class="font-bold text-white uppercase lg:text-5xl xl:text-7xl md:text-4xl sm:text-2xl">Territorio</h2>
-      <div class="ml-[4%]">
-        <CoorsaLogo class="text-red-700 lg:w-full md:w-[80%] sm:w-[60%]"/>
-      </div>
-    </header>
-    <video src="https://storage.googleapis.com/coorsa-mexico-web/Videos/Mapa.mp4" autoplay loop muted class="object-fill size-full">
+  <section class="relative hidden w-screen h-screen md:block">
+    <video src="https://storage.googleapis.com/coorsa-mexico-web/Videos/FONDOP%20MAP.mp4" autoplay loop muted class="object-cover size-full">
       Error!
     </video>
-    <h3 class="absolute bottom-[10%] left-[5%] xl:text-3xl lg:text-xl md:text-lg text-base text-white uppercase w-[30%]">
-      CON PRESENCIA EN MÁS DE 11 ESTADOS A NIVEL NACIONAL
-    </h3>
+    <article class="absolute top-0 left-0 px-10 pt-16 pb-10 size-full bg-black/20 backdrop-blur-sm">
+      <header class="float-right w-1/2">
+        <h2 class="font-light text-white uppercase lg:text-7xl xl:text-7xl md:text-4xl sm:text-2xl">Territorio</h2>
+        <CoorsaLogo class="text-red-700 lg:w-full md:w-[80%] sm:w-[60%] size-16"/>
+      </header>
+      <Map class="absolute w-[95%] translate-y-[-50%] translate-x-[-50%] top-1/2 left-1/2" />
+      <h3 class="absolute w-1/2 text-base font-light text-white uppercase bottom-10 xl:text-3xl lg:text-3xl md:text-lg lg:text-left">
+        CON PRESENCIA EN MÁS DE <span class="font-bold">11 ESTADOS</span> A NIVEL NACIONAL
+      </h3>
+    </article>
   </section>
 </template>

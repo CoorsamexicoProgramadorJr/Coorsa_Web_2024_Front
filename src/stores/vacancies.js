@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from "pinia"
 import { useRouter } from 'vue-router'
 import ClientService from '@/services/ClientService'
@@ -40,6 +40,12 @@ export const useVacancyStore = defineStore('vacancies', () => {
       .catch(error => console.log(error))
   }
 
+  function getVacancyName(id){
+    for(let vacancy of vacancies.value){
+      if(vacancy.id == id)  return vacancy.position
+    }
+  }
+
   return {
     showVacanciesList,
     vacancies,
@@ -47,5 +53,6 @@ export const useVacancyStore = defineStore('vacancies', () => {
     openList,
     applyVacancy,
     getAllVacancies,
+    getVacancyName,
   }
 })

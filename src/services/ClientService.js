@@ -4,6 +4,20 @@ export default {
   getCategories(){
     return api('/categories')
   },
+  postCategory(data){
+    return api.post('categories', data, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
+  updateCategory(id, data){
+    return api.put('categories/' + id, data, {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
   // Vacancies endpoints
   getVacancies(){
     return api('/vacancies')
@@ -42,6 +56,14 @@ export default {
   getServices(){
     return api.get('/services')
   },
+  // Consults
+  getConsults(){
+    return api.get('/consults', {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
+      }
+    })
+  },
   postConsult(data){
     return api.post('/consults', data)
   },
@@ -49,6 +71,13 @@ export default {
     return api.post('/curriculums', data, {
       headers: {
         'Content-Type': 'multipart/form-data'
+      }
+    })
+  },
+  getApplications(){
+    return api.get('/applications', {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
       }
     })
   },

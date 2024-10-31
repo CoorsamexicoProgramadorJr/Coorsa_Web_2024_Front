@@ -17,7 +17,15 @@ export const useCategoryStore = defineStore('categories', () => {
       .catch(error => console.log('Something went wrong. ', error))
   }
 
+  function getCategoryName(id){
+    for(let category of categories.value){
+      if(category.id == id) return category.name
+    }
+  }
+
   return {
-    categories
+    categories,
+    getCategories,
+    getCategoryName,
   }
 })

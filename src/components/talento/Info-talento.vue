@@ -1,38 +1,38 @@
 <script setup></script>
 <template>
   <section class="w-screen h-[184vh]">
-    <article class="w-full h-1/2 max-h-[92vh] py-[3%] px-[1%] flex flex-col justify-between items-center">
-      <h2 class="xl:text-6xl lg:text-5xl md:text-4xl text-3xl xl:w-[80%] w-[70%] md:w-[75%] mx-auto lg:indent-[10%] md:indent-[5%]">
+    <article class="w-full h-1/2 max-h-[92vh] py-[3%] px-[1%] flex flex-col justify-between items-center bg-[url('/img/fondoBlog.jpg')] bg-cover text-white">
+      <h2 class="xl:text-6xl lg:text-5xl md:text-4xl text-3xl xl:w-[80%] w-[70%] md:w-[75%] mx-auto lg:indent-[15%] md:indent-[5%]">
         ¿Quieres trabajar para empresas 
-        <span class="font-bold leading-tight text-red-700 uppercse xl:text-9xl lg:text-8xl text-7xl">
+        <span class="font-bold uppercase leading-tigh uppercse xl:text-9xl lg:text-8xl text-7xl">
           Líderes?
         </span>
       </h2>
       <div class="w-[80%] h-[50%] grid grid-cols-6 grid-rows-2 mx-auto gap-[2%] ">
         <figure class="flex items-center justify-center col-span-2">
-          <img src="/icons/walmart-color.svg" alt="Icono Walmart" class="max-h-[80%]">
+          <img src="/icons/walma-01.svg" alt="Icono Walmart" class="size-[95%]">
         </figure>
         <figure class="flex items-center justify-center col-span-2">
-          <img src="/icons/nestle-color.svg" alt="Icono Nestle" class="md:max-h-[80%] max-h-[70%]">
+          <img src="/icons/nest-01.svg" alt="Icono Nestle" class="size-[95%]">
         </figure>
         <figure class="flex items-center justify-center col-span-2">
-          <img src="/icons/dhl-color.svg" alt="Icono Dhl" class="max-h-[80%]">
+          <img src="/icons/dhl-01.svg" alt="Icono Dhl" class="size-[90%]">
         </figure>
         <figure class="flex items-center justify-center col-span-2 col-start-2">
-          <img src="/icons/sams-color.svg" alt="Icono Sams" class="max-h-[80%]">
+          <img src="/icons/colgate-01.svg" alt="Icono Sams" class="size-[90%]">
         </figure>
         <figure class="flex items-center justify-center col-span-2 col-start-4">
-          <img src="/icons/unilever-color.svg" alt="Icono Unilever" class="md:max-h-[80%] max-h-[70%]">
+          <img src="/icons/ul-01.svg" alt="Icono Unilever" class="size-[90%]">
         </figure>
       </div>
-      <h3 class="w-[85%] mx-auto xl:text-4xl lg:text-3xl lg:tracking-tighter md:text-2xl text-center text-xl">
+      <h3 class="w-[85%] lg:w-[80%] mx-auto xl:text-4xl lg:text-3xl lg:tracking-tight md:text-2xl text-center text-xl">
         <span class="font-bold uppercase">Coorsa</span> es una empresa líder en <span class="font-bold">Soluciones Logísticas</span> 
         con una sólida <span class="font-bold">presencia a nivel nacional.</span>
       </h3>
     </article>
     
     <!-- More info -->
-    <article class="w-screen text-white bg-black h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-3xl lg:text-2xl text-xl">
+    <article class="w-screen text-white bg-[#2D2E38] h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-3xl lg:text-2xl text-xl">
       <div class="flex lg:flex-row flex-col justify-around items-center w-full h-[45%]">
         <p class="w-1/2">
           Estamos comprometidos a proporcionar un entorno de trabajo dinámico y enriquecedor donde cada

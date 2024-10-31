@@ -14,53 +14,55 @@
       AutoPlay: {
         timeout: 3000,
         showProgress: false,
-        progressParentEl: false
+        progressParentEl: null
       }
     };
 
     new Carousel(container, options, { Autoplay });
   })
+
+  const slidesBg = [
+    "/img/Warehouse.jpeg",
+    "/img/Camiones_patio.jpeg",
+    "/img/Maniobras.jpeg",
+    "/img/Desarrollo_tic.jpeg",
+    "/img/Delivery.jpeg"
+  ]
 </script>
 <template>
-  <section class="w-screen h-[92vh] text-white bg-black pt-[1%] flex flex-col justify-around items-center">
+  <section class="w-screen h-screen text-white bg-[url('/img/fondo-aliados.jpg')] pt-[1%] flex flex-col justify-around items-center">
     <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold uppercase md:text-left w-[85%] text-center">Servicios</h2>
     <!-- Carrousel -->
-    <div class="f-carousel w-[85%] min-h-[60%] max-h-[70%] xl:text-3xl/none lg:text-xl/tight sm:text-lg" id="myCarousel">
-      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/almacen.jpg">
-        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Warehouse</h3>
-      </div>
-      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/quinta-servicio.jpg">
-        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Camiones de Patio</h3>
-      </div>
-      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/maniobras.jpg">
-        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Maniobras</h3>
-      </div>
-      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/smark-glove.jpg">
-        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Desarrollo de Tecnologías</h3>
-      </div>
-      <div class="relative bg-bottom bg-cover f-carousel__slide rounded-xl" data-lazy-src="/img/logistica-inversa.jpg">
-        <h3 class="absolute bottom-0 left-0 font-bold uppercase m-[5%]">Delivery Management</h3>
-      </div>
+    <div class="f-carousel w-[85%] h-[65%] xl:text-3xl/none lg:text-xl/tight sm:text-lg" id="myCarousel">
+      <div v-for="(slide, index) in slidesBg" :key="index" :data-lazy-src="slide" class="relative bg-right bg-cover f-carousel__slide rounded-xl"></div>
     </div>
   </section>
 </template>
 
 <style scoped>
   #myCarousel {
-    --f-carousel-slide-width: calc(100% / 4);
+    --f-carousel-slide-width: 70%;
     --f-carousel-spacing: 1%;
   }
 
-  @media screen and (max-width: 768px) {
+  #myCarousel .is-selected{
+    border: 2px solid white;
+  }
+
+  #myCarousel .f-carousel__slide:not(.is-selected){
+    @apply opacity-75;
+  }
+
+  @media screen and (min-width: 768px) {
     #myCarousel {
-      --f-carousel-slide-width: calc((100% - 2%) / 3);
-      --f-carousel-spacing: 1%;
+      --f-carousel-slide-width: 60%;
     }
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (min-width: 1024px){
     #myCarousel {
-      --f-carousel-slide-width: 70%;
+      --f-carousel-slide-width: 30%;
+      --f-carousel-spacing: 2%;
     }
   }
 </style>

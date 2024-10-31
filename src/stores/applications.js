@@ -116,6 +116,7 @@ export const useApplicationStore = defineStore('application', () => {
     errors,
     sending,
     uploading,
+    file,
     alertStatus,
     applicationForm,
     submitApplication,

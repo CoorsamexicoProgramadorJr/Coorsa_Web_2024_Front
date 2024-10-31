@@ -6,18 +6,20 @@
   const vacancyStore = useVacancyStore()
 </script>
 <template>
-  <section class="w-[100vw] min-h-[92vh] p-[3%]" id="sec-vacantes">
-    <h2 class="mb-10 text-4xl font-bold text-black uppercase lg:text-6xl md:text-5xl lg:mb-20 lg:text-center">Nuestras Vacantes</h2>
-    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-4xl lg:text-3xl text-2xl lg:space-y-0 space-y-10 text-red-700">
-      <button v-for="category in categoryStore.categories" :key="category.id" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-1/4 w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold pb-[1%] border-2 border-red-700 uppercase lg:break-words lg:tracking-tight transition ease-in-out delay-75 hover:scale-110">
-        {{ category.name }}
-      </button>
+  <section class="w-[100vw] min-h-[92vh] p-[3%] bg-[url('/img/fondo-testimonios.jpg')] bg-cover bg-bottom text-white" id="sec-vacantes">
+    <h2 class="mb-10 text-4xl font-bold uppercase lg:text-6xl md:text-5xl lg:mb-20 lg:text-center">Nuestras Vacantes</h2>
+    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-4xl lg:text-3xl text-2xl lg:space-y-0 space-y-10">
+      <template v-for="(category, index) in categoryStore.categories" :key="category.id">
+        <button v-if="index < 3" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-1/4 w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold p-[1%] border-2 border-white uppercase lg:break-words lg:tracking-tight transition ease-in-out delay-75 hover:scale-110 hover:bg-white/20">
+          {{ category.name }}
+        </button>
+      </template>
     </div>
 
     <div v-if="vacancyStore.showVacanciesList && vacancyStore.vacancies.length > 0" class="m-[5%] flex flex-col items-center">
-      <details class="w-[90%] mb-[2%] flex flex-col items-center" v-for="vacancy in vacancyStore.vacancies" :key="vacancy.id">
-        <summary class="w-full lg:text-3xl text-2xl border-b-2 border-red-700 pb-[1%] text-red-700 hover:cursor-pointer" open>
-          <span class="font-bold text-black">{{ vacancy.position }}</span>
+      <details class="w-[90%] mb-[2%] flex flex-col items-center group" v-for="vacancy in vacancyStore.vacancies" :key="vacancy.id">
+        <summary class="w-full lg:text-3xl text-2xl border-b-2 border-white pb-[1%] text-red-700 hover:cursor-pointer" open>
+          <span class="ml-2 font-semibold text-white">{{ vacancy.position }}</span>
         </summary>
         <div class="py-[2%] px-[4%]">
           <dl class="text-lg xl:text-2xl lg:text-xl">

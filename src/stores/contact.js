@@ -4,7 +4,7 @@ import ClientService from "@/services/ClientService"
 
 export const useContactStore = defineStore('contact', () => {
   const states = ref([])
-  const errors = reactive({})
+  const errors = ref([])
   const services = ref([])
   const sending = ref(false)
   const showAlert = ref(false)
@@ -69,10 +69,10 @@ export const useContactStore = defineStore('contact', () => {
           console.log(error)
           return
         }
-        errors.errors = error.response.data.errors
+        Object.assign(errors.value, error.response.data.errors)
+        console.log(errors.value)
       })
       .finally(() => {
-        console.log(errors)
         sending.value = false
       })
   }
@@ -90,6 +90,28 @@ export const useContactStore = defineStore('contact', () => {
   function resetErrors(){
     delete errors.errors
   }
+  
+  function getState(id){
+    for(let state of states.value){
+      if(state.id == id) return state.name
+    }
+  }
+
+  function getAreaCode(id){
+    for(let state of states.value){
+      if(state.area_code.id == id) return state.area_code.code
+    }
+  }
+
+  function getService(id){
+    for(let service of services.value){
+      if(service.id == id) return service.name
+    }
+  }
+
+  function hasErrors(key){
+    return Object.keys(errors.value).length != 0 && Object.keys(errors.value).includes(key)
+  }
 
   return {
     states,
@@ -102,6 +124,10 @@ export const useContactStore = defineStore('contact', () => {
     resetForm,
     resetErrors,
     sending,
-    getSending
+    getSending,
+    getState,
+    getAreaCode,
+    getService,
+    hasErrors,
   }
 })

@@ -1,12 +1,13 @@
-import { reactive, ref, onBeforeMount } from "vue"
+import { reactive, ref } from "vue"
 import { defineStore } from "pinia"
-import { useUserStore } from '@/stores/administration/user'
 import ClientService from "@/services/ClientService"
 import { useVacancyStore } from "../vacancies"
+import { useAlertNotificationStore } from "../alertNotification"
 
 export const useNewVacancyStore = defineStore('newVacancy', () => {
-  const userStore = useUserStore()
+  
   const vacancyStore = useVacancyStore()
+  const alertNotificationStore = useAlertNotificationStore()
   const visibleNewForm = ref(false)
   const newVacancy = reactive({
     position: '',
@@ -18,13 +19,9 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
     category_id: ''
   })
   const vacancyErrors = reactive({})
-  const showAlert = ref(false)
-  const alertMsg = ref('')
 
   const vacancyDetails = ref(false)
   const vacancy = reactive({})
-
-  onBeforeMount(() => newVacancy.user_id = userStore.user.id)
 
   async function submitNewVacancy(){
     console.log(newVacancy)
@@ -32,11 +29,12 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
     await ClientService.postNewVacancy(newVacancy)
       .then((response) => {
         console.log(response)
-        alertMsg.value = 'Vacante creada exitosamente'
+        alertNotificationStore.alertMsg = 'Vacante creada exitosamente'
+        alertNotificationStore.alertType = 'success'
         resetNewVacancyForm()
         manageNewForm()
-        manageNotificationAlert()
-        setTimeout(() => manageNotificationAlert(), 2000)
+        alertNotificationStore.manageNotificationAlert()
+        setTimeout(() => alertNotificationStore.manageNotificationAlert(), 2000)
         vacancyStore.getAllVacancies()
       })
       .catch((error) => {
@@ -44,6 +42,16 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
         if(error.status == 400){
           Object.assign(vacancyErrors, error.response.data.errors)
           console.log(vacancyErrors)
+          if(Object.keys(vacancyErrors).includes('user_id')){
+            manageNewForm()
+            alertNotificationStore.alertMsg = 'Error, con el usuario'
+            alertNotificationStore.alertType = 'error'
+            alertNotificationStore.manageNotificationAlert()
+            setTimeout(() => {
+              alertNotificationStore.manageNotificationAlert()
+            }, 2000)
+            
+          }
         }
       })
   }
@@ -62,10 +70,6 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
     })
   }
 
-  function manageNotificationAlert(){
-    showAlert.value = !showAlert.value
-  }
-
   function manageVacancyDetails(){
     vacancyDetails.value = !vacancyDetails.value
   }
@@ -80,10 +84,10 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
     await ClientService.updateVacancy(vacancy.id, vacancy)
       .then(response => {
         console.log(response)
-        alertMsg.value = 'Vacante actualizada correctamente.'
+        alertNotificationStore.alertMsg = 'Vacante actualizada correctamente.'
         manageVacancyDetails()
-        manageNotificationAlert()
-        setTimeout(() => manageNotificationAlert(), 2000)
+        alertNotificationStore.manageNotificationAlert()
+        setTimeout(() => alertNotificationStore.manageNotificationAlert(), 2000)
         vacancyStore.getAllVacancies()
       })
       .catch(error => {
@@ -95,21 +99,23 @@ export const useNewVacancyStore = defineStore('newVacancy', () => {
       })
   }
 
+  function setUserId(){    
+    newVacancy.user_id = localStorage.getItem('User_id')
+  }
+
   return {
     visibleNewForm,
     newVacancy,
     vacancyErrors,
-    showAlert,
-    alertMsg,
     vacancyDetails,
     vacancy,
     submitNewVacancy,
     resetNewVacancyForm,
     manageNewForm,
     resetVacancyErrors,
-    manageNotificationAlert,
     manageVacancyDetails,
     selectVacancy,
     updateVacancy,
+    setUserId,
   }
 })

@@ -1,21 +1,13 @@
 <script setup>
-  import { ref, watch } from 'vue'
-  import { RouterLink } from 'vue-router'
+  import { RouterLink, useRoute } from 'vue-router'
   import { Fancybox } from "@fancyapps/ui"
   import ApplicationMark from '@/components/icons/ApplicationMark.vue'
-
-  const props = defineProps({
-    currentRoute: {
-      type: String,
-      required: true
-    }
-  })
+  import CoorsaLogo from './icons/CoorsaLogo.vue'
   
-  const availableLinks = ref([])
   const links = [
     {
       name: 'Inicio',
-      pathName: 'home',
+      pathName: 'start',
     }, 
     {
       name: 'Servicios',
@@ -34,35 +26,46 @@
       pathName: 'blog'
     }
   ]
-  
-  watch(props, () => {
-    availableLinks.value = links.filter((link) => link.pathName != props.currentRoute)
-  })
+
+  const route = useRoute()
+
+  function routeLinks(){
+    return links.filter((link) => link.pathName != route.name)
+  }
 
   Fancybox.bind("[data-fancybox]", {})
 </script>
+
 <template>
-  <footer class="w-screen h-[30vh] bg-black border-t text-white lg:pr-[2%] relative lg:block mobile-l:hidden z-[2]">
+  <footer class="w-screen h-[350px] bg-[url('/img/fondo-pie.jpg')] bg-cover bg-center border-t-2 text-white lg:pr-[2%] relative lg:block mobile-l:hidden z-[2]">
     <!-- Upper footer -->
     <article class="flex justify-around items-center gap-[1%] w-full h-2/3">
-      <figure class="lg:w-2/6">
-        <ApplicationMark class="object-cover m-auto md:w-[80%]"/>
-      </figure>
+      <div class="flex items-center justify-center lg:w-2/6">
+         <CoorsaLogo class="size-[90%]"/>
+      </div>
 
-      <div class="flex flex-col items-center justify-around w-1/6 h-full py-[1%] xl:gap-[2%] lg:gap-[1%] xl:text-lg font-semibold lg:text-base">
-        <div v-for="link in availableLinks" :key="link.name" class="hover:border-b border-b-red-700">
+      <div class="flex flex-col items-center justify-around w-1/6 h-[80%] space-y-1  xl:text-lg font-semibold lg:text-base">
+        <div v-for="link in routeLinks()" :key="link.name" class="hover:border-b border-b-red-700">
           <RouterLink class="uppercase" :to="{ name: link.pathName }">{{ link.name }}</RouterLink>
         </div>
       </div>
 
-      <div class="w-2/6 h-full">
-        <div class="my-[2%]">
+      <div class="flex flex-col justify-center w-2/6 h-full gap-2">
+        <div>
           <h4 class="w-1/4 xl:text-lg lg:text-base uppercase border-b border-b-red-700 my-[2%] font-bold">Sede</h4>
-          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="xl:text-base lg:text-sm">Terra Business Park # 31 y 32C, 76269. Querétaro México.</a>
+          <div class="mx-3">
+            <a href="https://maps.app.goo.gl/o2mq4aL9FszA1gRT9" target="_blank" class="xl:text-base lg:text-base">
+              Terra Business Park # 31 y 32C, 76269. Querétaro México.
+            </a>
+          </div>
         </div>
         <div>
           <h3 class="w-1/4 xl:text-lg lg:text-base uppercase border-b border-b-red-700 my-[2%] font-bold">Warehouse</h3>
-          <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="xl:text-base lg:text-sm">Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.</a>
+          <div class="mx-3">
+            <a href="https://maps.app.goo.gl/ZduUtuawGdiq4P4z5" target="_blank" class="xl:text-base lg:text-base">
+              Mexiquense 75, Coacalco, 54910. Tultitlán de Mariano Escobedo, Méx.
+            </a>
+          </div>
         </div>
       </div>
 
@@ -79,14 +82,14 @@
             </svg>
           </a>
         </div>
-        <RouterLink to="/contacto" class=" text-center lg:py-1 uppercase bg-red-700 xl:w-[40%] lg:w-2/3 h-[20%] rounded-xl hover:bg-red-800">Contacto</RouterLink>
+        <RouterLink to="/contacto" class=" text-center py-2 uppercase font-bold bg-red-700 xl:w-[40%] lg:w-2/3 h-10 rounded-xl hover:bg-red-800">Contacto</RouterLink>
       </div>
     </article>
     <!-- Lower footer -->
     <article class="flex items-center w-full h-1/3 gap-[1%] border-t border-red-700">
       <div class="flex items-center justify-center border-r border-red-700 h-2/3 w-[66.66%]">
         <p class="tracking-widest xl:text-xl lg:text-lg">
-          &#xA9; 2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 
+          2023 COORSA MÉXICO. TODOS LOS DERECHOS RESERVADOS 
         </p>
       </div>
       
@@ -106,11 +109,11 @@
   </footer>
   
   <!-- Mobile footer -->
-  <footer class="w-screen h-[42vh] bg-black border-t text-white z-[2] relative lg:hidden block p-1">
+  <footer class="w-screen h-[42vh] bg-[url('/img/fondo-pie.jpg')] bg-cover bg-center border-t text-white z-[2] relative lg:hidden block p-1">
     <!-- Upper footer -->
     <div class="flex justify-around items-center gap-[1%] w-full h-3/6">
       <div class="flex flex-col items-center justify-around w-3/12 h-full py-[1%] font-semibold">
-        <div v-for="link in availableLinks" :key="link.name" class="tex-base hover:border-b border-b-red-700">
+        <div v-for="link in routeLinks()" :key="link.name" class="tex-base hover:border-b border-b-red-700">
           <RouterLink class="uppercase" :to="{ name: link.pathName }">{{ link.name }}</RouterLink>
         </div>
       </div>
@@ -118,7 +121,7 @@
       <div class="flex flex-col justify-center w-6/12 h-full">
         <div>
           <h3 class="w-1/4 uppercase border-b border-b-red-700 my-[1%] font-bold">Sede</h3>
-          <a href="https://maps.app.goo.gl/idmYkCsb3UBVveJX9" target="_blank" class="text-sm tracking-tighter sm:text-base lg:tracking-normal">
+          <a href="https://maps.app.goo.gl/o2mq4aL9FszA1gRT9" target="_blank" class="text-sm tracking-tighter sm:text-base lg:tracking-normal">
             Terra Business Park # 31 y 32C, 76269. Querétaro México.
           </a>
         </div>
@@ -149,11 +152,11 @@
 
     <!-- Middle footer -->
     <div class="flex items-center divide-x divide-red-700 h-2/6">
-      <figure class="w-1/2">
-        <ApplicationMark class="object-cover m-auto md:w-[80%] w-[75%]"/>
-      </figure>
+      <div class="flex items-center justify-center w-1/2">
+         <CoorsaLogo class="size-[90%]"/>
+      </div>
 
-      <div class="flex items-center w-1/2 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl md:text-base text-sm">
+      <div class="flex items-center w-1/2 divide-x divide-red-700 h-2/3 gap-[1%] 2xl:text-xl md:text-base text-xs">
         <div class="flex items-center justify-center w-[54.5%] h-full p-[1%]">
           <a data-fancybox href="https://storage.googleapis.com/coorsa-mexico-web/Documentos/AVISO%20DE%20PRIVACIDAD%20COLABORADOR.pdf" class="text-center">
             AVISO PRIVACIDAD COLABORADOR
