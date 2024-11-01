@@ -13,13 +13,12 @@ export const useLoginStore = defineStore('login', () => {
   const errors = reactive({})
   const sending = ref(false)
   const userToken = ref('')
+  const type = ref('password')
 
   watch(passwordVisibility, () => {
-    if(passwordVisibility.value){
-      document.getElementById('password').type = 'text'
-    }else if(passwordVisibility.value == false) {
-      document.getElementById('password').type = 'password'
-    }
+    (passwordVisibility.value) ? type.value = 'text' : type.value = 'password'
+    
+    document.getElementById('password').type = type.value
   })
 
   async function login(){
@@ -51,7 +50,7 @@ export const useLoginStore = defineStore('login', () => {
       .finally(() => {
         sending.value = false
         console.log(errors)
-        console.log(user)
+        console.log(userToken.value)
       })
   }
 

@@ -1,31 +1,45 @@
 <script setup>
-  import { onUnmounted, onMounted } from 'vue'
+  import { onUnmounted, onBeforeMount } from 'vue'
+  import { useRoute } from 'vue-router'
   import { useVacancyStore } from '@/stores/vacancies'
   import { useCategoryStore } from '@/stores/categories'
   import { useContactStore } from '@/stores/contact'
   import { useApplicationStore } from '@/stores/applications'
-  import ContactAlert from '../ContactAlert.vue'
+  import { useAlertNotificationStore } from '@/stores/alertNotification'
+  import notificationAlert from '../administracion/notificationAlert.vue'
 
-  const props = defineProps({
-    idVacancy: {
-      type: String || Number,
-      required: true
+  const route = useRoute()
+  const vacancyStore = useVacancyStore()
+  const categoryStore = useCategoryStore()
+  const contactStore = useContactStore()
+  const appStore = useApplicationStore()
+  const notificationStore = useAlertNotificationStore()
+
+  onBeforeMount(async() => {
+    if(contactStore.states.length == 0){
+      await contactStore.requestStates()
+    }
+    if(vacancyStore.vacancies.length == 0){
+      await vacancyStore.getAllVacancies()
+    }
+    console.log(appStore.applicationForm)
+    if(!appStore.applicationForm.vacancy_id){
+      console.log('No category id')
+      for(let vacancy of vacancyStore.vacancies){
+        if(vacancy.id == route.params.vacancyId){
+          appStore.applicationForm.category_id = vacancy.category_id
+        }
+      }
     }
   })
-
-  const { vacancies } = useVacancyStore()
-  const { categories } = useCategoryStore()
-  const { states } = useContactStore()
-  const appStore = useApplicationStore()
-
-  onMounted(() => console.log(appStore.file))
 
   onUnmounted(() => {
     appStore.resetAppForm()
   })
 </script>
 <template>
-  <ContactAlert v-if="appStore.alertStatus" alert-type="postulacion"/>
+   <notificationAlert v-if="notificationStore.showAlert">{{ notificationStore.alertMsg }}</notificationAlert>
+  
   <form @submit.prevent="appStore.submitApplication" class="h-[85%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-9 lg:gap-x-[3%] md:gap-x-[5%] 2xl:text-2xl xl:text-xl text-lg" novalidate>
     <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
       <label for="name" class="mb-1 font-semibold uppercase">Nombre</label>
@@ -36,8 +50,8 @@
       <label for="phone" class="mb-1 font-semibold uppercase">Teléfono</label>
       <fieldset class="flex w-full h-[35%]">
         <select v-model="appStore.applicationForm.area_code_id" name="lada" id="lada" class="2xl:w-[38%] xl:w-[35%] lg:w-[45%] md:w-[39%] w-[48%] border-l border-y focus:border-l-2 focus:border-y-2 border-white md:rounded-l-xl rounded-l-full px-[2%] py-1 outline-none 2xl:text-xl xl:text-lg text-base md:tracking-tighter tracking-tight text-center bg-transparent">
-          <option value="">-- LADA --</option>
-          <option v-for="state in states" :key="state.id" :value="state.id" :title="state.name">{{ state.code }} ({{ state.area_code.code }})</option>
+          <option value="" class="bg-blue-950">-- LADA --</option>
+          <option v-for="state in contactStore.states" :key="state.id" :value="state.id" :title="state.name" class="bg-blue-950">{{ state.code }} ({{ state.area_code.code }})</option>
         </select>
         <input type="tel" v-model="appStore.applicationForm.phone" id="phone" name="phone" placeholder="XXX-XXX-XXXX" class="2xl:w-[62%] xl:w-[65%] lg:w-[55%] md:w-[61%] w-[72%] border-r border-y focus:border-r-2 focus:border-y-2 border-white outline-none md:rounded-r-xl rounded-r-full px-[3%] py-1 lg:tracking-tighter md:tracking-normal tracking-widest bg-transparent">
       </fieldset>
@@ -46,7 +60,7 @@
       </p>
     </div>
     <div class="flex flex-col justify-center w-full col-span-2">
-      <label for="email" class="mb-1 font-semibold uppercase">Email</label>
+      <label for="email" class="mb-1 font-semibold uppercase">Correo Electronico</label>
       <input type="email" v-model="appStore.applicationForm.email" id="email" name="email" placeholder="correo@correo.com" class="h-[35%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white bg-transparent px-[3%] py-1">
       <p v-if="Object.keys(appStore.errors).length != 0 && Object.keys(appStore.errors).includes('email')" class="text-sm text-red-700 sm:text-base">
         {{ appStore.errors.email[0] }}
@@ -56,7 +70,7 @@
       <label for="service" class="mb-1 font-semibold uppercase">Vacantes</label>
       <select v-model="appStore.applicationForm.category_id" disabled name="service" id="service" class="h-[35%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[1%] bg-transparent text-center uppercase 2xl:text-xl xl:text-lg lg:text-base xl:tracking-tight py-1">
         <option value="" selected>-- Selecciona una opción --</option>
-        <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+        <option v-for="category in categoryStore.categories" :key="category.id" :value="category.id">{{ category.name }}</option>
       </select>
       <p v-if="Object.keys(appStore.errors).length != 0 && Object.keys(appStore.errors).includes('category_id')" class="text-sm text-red-700 sm:text-base">
         {{ appStore.errors.category_id[0] }}
@@ -66,7 +80,7 @@
       <label for="state" class="mb-1 font-semibold uppercase">Puesto</label>
       <select v-model="appStore.applicationForm.vacancy_id" disabled name="state" id="state" class="h-[35%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[1%] bg-transparent text-center uppercase 2xl:text-xl xl:text-lg lg:text-base xl:tracking-tight py-1 truncate">
         <option value="" selected>-- Selecciona una opción --</option>
-        <option v-for="vacancy in vacancies" :key="vacancy.id" :value="vacancy.id">{{ vacancy.position }}</option>
+        <option v-for="vacancy in vacancyStore.vacancies" :key="vacancy.id" :value="vacancy.id">{{ vacancy.position }}</option>
       </select>
       <p v-if="Object.keys(appStore.errors).length != 0 && Object.keys(appStore.errors).includes('vacancy_id')" class="text-sm text-red-700 sm:text-base">
         {{ appStore.errors.vacancy_id[0] }}

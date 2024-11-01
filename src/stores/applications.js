@@ -1,16 +1,11 @@
-import { reactive, ref } from "vue"
-import { useRouter } from "vue-router"
+import { reactive, ref, onBeforeMount } from "vue"
+import { useRouter, useRoute } from "vue-router"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
+import { useAlertNotificationStore } from "./alertNotification"
 
 export const useApplicationStore = defineStore('application', () => {
-  const errors = reactive({})
-  const sending = ref(false)
-  const uploading = ref(false)
-  const file = ref()
-  const alertStatus = ref(false)
-  const router = useRouter()
-
+  const notificationStore = useAlertNotificationStore()
   const applicationForm = reactive({
     name: '',
     phone: '',
@@ -20,6 +15,20 @@ export const useApplicationStore = defineStore('application', () => {
     category_id: '',
     vacancy_id: '',
     area_code_id: ''
+  })
+  const errors = reactive({})
+  const sending = ref(false)
+  const uploading = ref(false)
+  const file = ref()
+  const router = useRouter()
+  const route = useRoute()
+
+  onBeforeMount(() => {
+    if(Object.keys(route.params).includes('vacancyId')){
+      if(!applicationForm.vacancy_id){
+        applicationForm.vacancy_id = route.params.vacancyId
+      }
+    }
   })
 
   async function submitApplication(){
@@ -32,36 +41,36 @@ export const useApplicationStore = defineStore('application', () => {
       resetErrors()
       await ClientService.postApplication(applicationForm)
         .then(response => {
-          alertStatus.value = true
-          setTimeout(() => {
-            alertStatus.value = false
-          }, 2000)
           console.log(response)
+          notificationStore.alertType = 'success'
+          notificationStore.alertMsg = 'Postulación enviada correctamente.'
+          notificationStore.manageNotificationAlert()
+          
           resetAppForm()
           resetErrors()
-          setTimeout(() => {
-            router.push({ name: 'talento' })
-          }, 3000)
         })
         .catch(error => {
+          console.log(error)
+          notificationStore.alertType = 'error'
           if(error.response.status !== 400){
-            console.log(error)
+            notificationStore.alertMsg = 'Ha ocurrido un error inesperado.'
             return
+          }else{
+            Object.assign(errors, error.response.data.errors)
+            notificationStore.alertMsg = 'Los campos son invalidos.'
           }
-          Object.assign(errors, error.response.data.errors)
+          notificationStore.manageNotificationAlert()
         })
         .finally(() => {
           sending.value = false
         })
+        setTimeout(() => {
+            notificationStore.manageNotificationAlert()
+            if(Object.keys(errors).length == 0){
+              router.push({ name: 'talento' })
+            }
+        }, 2000)
     }
-  }
-
-  function getSendingStatus(){
-    return sending.value
-  }
-
-  function getErrors(){
-    return errors.value
   }
 
   function resetAppForm(){
@@ -79,7 +88,6 @@ export const useApplicationStore = defineStore('application', () => {
     for(var member in errors){
       delete errors[member]
     }
-    // console.log(errors)
   }
 
   function manageCv(event){
@@ -98,34 +106,31 @@ export const useApplicationStore = defineStore('application', () => {
       })
       .catch((error) => {
         console.log(error)
+        notificationStore.alertType = 'error'
         if(error.status == 400){
           console.log(error.response.data.errors)
-          alert('Ha ocurrido un error al subir el cv, intenta de nuevo o prueba con otro archivo.')
+          notificationStore.alertMsg = 'Ha ocurrido un error al subir el cv, intenta de nuevo o prueba con otro archivo.'
+          notificationStore.manageNotificationAlert()
         }
       })
       .finally(() => {
         uploading.value = false
       })
+
+    setTimeout(() => notificationStore.manageNotificationAlert(), 3000)
   }
 
-  function getAlertStatus(){
-    return alertStatus.value
-  }
 
   return {
     errors,
     sending,
     uploading,
     file,
-    alertStatus,
     applicationForm,
     submitApplication,
-    getSendingStatus,
-    getErrors,
     manageCv,
     resetAppForm,
     resetErrors,
     manageCv,
-    getAlertStatus
   }
 })

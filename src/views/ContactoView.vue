@@ -1,21 +1,19 @@
 <script setup>
-  import { ref, onMounted, onUnmounted, onBeforeMount } from 'vue'
+  import { onUnmounted } from 'vue'
   import { useRoute } from 'vue-router'
   import VacanteForm from '@/components/contacto/Vacante-form.vue'
   import { useContactStore } from '@/stores/contact'
+  import { useAlertNotificationStore } from '@/stores/alertNotification'
   import ContactAlert from '@/components/ContactAlert.vue'
+  import notificationAlert from '@/components/administracion/notificationAlert.vue'
 
   const route = useRoute()
-  const vacancyId = ref('')
   const contactStore = useContactStore()
-
-  onMounted(() => {
-    vacancyId.value = route.params.vacancyId
-  })
+  const notificationStore = useAlertNotificationStore()
 
   onUnmounted(() => {
-    resetForm()
-    resetErrors()
+    contactStore.resetForm()
+    contactStore.resetErrors()
   })
 </script>
 <template>
@@ -26,8 +24,8 @@
     </article>
     <article class="lg:w-2/3 h-full pt-[7vh] lg:pt-10 md:px-[5%] px-[10%]">
       <!-- Contact form -->
-      <ContactAlert v-if="contactStore.showAlert" alert-type="consulta"/>
-      <form action="" v-if="vacancyId.length == 0" @submit.prevent="contactStore.submitContactForm" class="h-[85%] lg:h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] gap-y-2 sm:gap-y-0 2xl:text-2xl xl:text-xl text-lg" novalidate>
+      <notificationAlert v-if="notificationStore.showAlert" >{{ notificationStore.alertMsg }}</notificationAlert>
+      <form action="" v-if="route.params.length == 0" @submit.prevent="contactStore.submitContactForm" class="h-[85%] lg:h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] gap-y-2 sm:gap-y-0 2xl:text-2xl xl:text-xl text-lg" novalidate>
         <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
           <label for="name" class="mb-1 font-semibold uppercase">Nombre</label>
           <input type="text" id="name" name="name" placeholder="Nombre completo" v-model="contactStore.contactForm.name" class="md:h-[40%] max-h-[50%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[3%] py-1 bg-transparent">
@@ -37,8 +35,8 @@
           <label for="phone" class="mb-1 font-semibold uppercase">Teléfono</label>
           <fieldset class="flex w-full h-[40%]">
             <select name="lada" id="lada" v-model="contactStore.contactForm.area_code_id" class="2xl:w-[38%] xl:w-[35%] lg:w-[45%] md:w-[39%] w-[48%] border-l border-y focus:border-l-2 focus:border-y-2 border-white md:rounded-l-xl rounded-l-full px-[2%] py-1 outline-none 2xl:text-xl xl:text-lg text-base md:tracking-tighter tracking-tight text-center bg-transparent">
-              <option value="">-- LADA --</option>
-              <option v-for="state in contactStore.states" :key="state.name" :value="state.area_code_id" :title="state.name">{{ state.code }} ({{ state.area_code.code }})</option>
+              <option value="" class="bg-blue-950">-- LADA --</option>
+              <option v-for="state in contactStore.states" :key="state.name" :value="state.area_code_id" :title="state.name" class="bg-blue-950">{{ state.code }} ({{ state.area_code.code }})</option>
             </select>
             <input type="tel" v-model="contactStore.contactForm.phone" id="phone" name="phone" placeholder="XXX-XXX-XXXX" class="2xl:w-[62%] xl:w-[65%] lg:w-[55%] md:w-[61%] w-[72%] border-r border-y focus:border-r-2 focus:border-y-2 border-white outline-none md:rounded-r-xl rounded-r-full px-[3%] py-1 lg:tracking-tighter md:tracking-normal tracking-widest bg-transparent">
           </fieldset>
@@ -56,8 +54,8 @@
         <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
           <label for="service" class="mb-1 font-semibold uppercase">Servicio</label>
           <select name="service" id="service" v-model="contactStore.contactForm.service_id" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[1%] bg-transparent text-center uppercase 2xl:text-xl xl:text-lg lg:text-base xl:tracking-tight py-1">
-            <option value="" selected>-- Selecciona una opción --</option>
-            <option v-for="service in contactStore.services" :key="service.id" :value="service.id">{{ service.name }}</option>
+            <option value="" selected class="bg-blue-950">-- Selecciona una opción --</option>
+            <option v-for="service in contactStore.services" :key="service.id" :value="service.id" class="bg-blue-950">{{ service.name }}</option>
           </select>
           <p v-if="Object.keys(contactStore.errors).length != 0 && Object.keys(contactStore.errors).includes('service_id')" class="text-sm text-red-700 sm:text-base">
             {{ contactStore.errors.service_id[0] }}
@@ -66,8 +64,8 @@
         <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
           <label for="state" class="mb-1 font-semibold uppercase">Estado</label>
           <select name="state" id="state" v-model="contactStore.contactForm.state_id" class="h-[40%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[1%] bg-transparent text-center uppercase 2xl:text-xl xl:text-lg lg:text-base py-1">
-            <option value="">-- Selecciona una opción --</option>
-            <option v-for="state in contactStore.states" :key="state.id" :value="state.id">{{ state.name }}</option>
+            <option value="" class="bg-blue-950">-- Selecciona una opción --</option>
+            <option v-for="state in contactStore.states" :key="state.id" :value="state.id" class="bg-blue-950">{{ state.name }}</option>
           </select>
           <p v-if="Object.keys(contactStore.errors).length != 0 && Object.keys(contactStore.errors).includes('state_id')" class="text-sm text-red-700 sm:text-base">
             {{ contactStore.errors.state_id[0] }}
@@ -87,7 +85,7 @@
         </div>
       </form>
       <!-- Vacancy Form -->
-      <VacanteForm v-else :idVacancy="vacancyId"/>
+      <VacanteForm v-else />
 
       <footer class="h-[15%] w-full flex flex-col justify-around items-center pb-1">
         <div class="flex items-center justify-center w-full gap-2 overflow-hidden h-2/3">
