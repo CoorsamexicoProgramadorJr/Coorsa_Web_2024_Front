@@ -2,23 +2,21 @@
   import { onBeforeMount } from 'vue'
   import { useNewVacancyStore } from '@/stores/administration/newVacancy'
   import { useCategoryStore } from '@/stores/categories'
+  import { resetErrors, resetForm } from '@/components/helpers'
 
   const newVacancyStore = useNewVacancyStore()
   const categoryStore = useCategoryStore()
 
   onBeforeMount(async () => {
-    newVacancyStore.setUserId()
-    newVacancyStore.resetNewVacancyForm()
-    newVacancyStore.resetVacancyErrors()
+    // newVacancyStore.setUserId()
+    resetForm(newVacancyStore.newVacancy)
+    resetErrors(newVacancyStore.vacancyErrors)
   })
-
-  console.log(newVacancyStore.newVacancy)
-  console.log(categoryStore.categories)
 </script>
 
 <template>
-  <div class="absolute top-0 left-0 w-screen h-screen bg-black/50 lg:w-3/4 z-[1] lg:ml-[25%]">
-    <div class="w-[85%] mx-auto top-[5%] lg:top-[7%] max-h-[92vh] bg-white z-[3] relative rounded-2xl p-4 overflow-y-auto md:w-[80%]">
+  <div class="absolute top-0 left-0 w-screen h-screen bg-black/50 lg:w-3/4 z-[2] lg:ml-[25%]">
+    <div class="w-[85%] mx-auto top-[5%] lg:top-[7%] z-[3] max-h-[92vh] bg-white relative rounded-2xl p-4 overflow-y-auto md:w-[80%]">
       <button @click="newVacancyStore.manageNewForm()" class="fixed right-[7%] md:right-[10%] lg:right-[8%] top-[5%] lg:top-[7%] flex items-center justify-center text-blue-900 z-[4]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 stroke-2 md:w-12">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -49,9 +47,11 @@
             <label for="category" class="text-lg font-semibold text-gray-600 lg:text-xl">Categoria</label>
             <select v-model="newVacancyStore.newVacancy.category_id" name="category" id="category" class="flex-1 py-1 text-base text-center uppercase border-b border-gray-600 outline-none">
               <option value="">-- SELECCIONA UNA OPCIÓN --</option>
-              <option :value="category.id" v-for="category in categoryStore.categories" :key="category.id">
-                {{ category.name }}
-              </option>
+              <template v-for="category in categoryStore.categories" :key="category.id">
+                <option v-if="category.status != 0" :value="category.id" >
+                  {{ category.name }}
+                </option>
+              </template>
             </select>
           </div>
           <p v-if="Object.keys(newVacancyStore.vacancyErrors).length != 0 && Object.keys(newVacancyStore.vacancyErrors).includes('category_id')" class="text-sm text-red-700">

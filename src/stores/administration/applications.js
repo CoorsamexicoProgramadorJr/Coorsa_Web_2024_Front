@@ -1,8 +1,12 @@
 import { reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import ClientService from '@/services/ClientService'
+import { useVacancyStore } from '../vacancies'
+import { useCategoryStore } from '../categories'
 
 export const useAppAdmStore = defineStore('app-adm', () => {
+  const vacancyStore = useVacancyStore()
+  const categoryStore = useCategoryStore()
   const applications = ref([])
   const applicationDetails = ref(false)
   const application = reactive({})
@@ -21,7 +25,9 @@ export const useAppAdmStore = defineStore('app-adm', () => {
 
   function selectApplication(applicationData){
     Object.assign(application, applicationData)
-    console.log(application)
+    manageApplicationDetails()
+    vacancyStore.getVacancyById(applicationData.vacancy_id)
+    categoryStore.getCategoryById(applicationData.category_id)
   }
 
   return {

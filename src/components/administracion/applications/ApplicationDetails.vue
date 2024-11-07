@@ -1,5 +1,4 @@
 <script setup>
-  import { onBeforeMount } from 'vue'
   import { useAppAdmStore } from '@/stores/administration/applications'
   import { formatDate } from '@/components/helpers'
   import { useContactStore } from '@/stores/contact'
@@ -10,8 +9,6 @@
   const contactStore = useContactStore()
   const categoryStore = useCategoryStore()
   const vacancyStore = useVacancyStore()
-
-  onBeforeMount(() => vacancyStore.getAllVacancies())
 </script>
 
 <template>
@@ -60,7 +57,7 @@
             </svg>
             <h4 class="text-xl font-semibold">Categoria de Vacante:</h4>
           </div>
-          <p class="ml-4 text-base">{{ categoryStore.getCategoryName(appAdmStore.application.category_id) }}</p>
+          <p class="ml-4 text-base">{{ categoryStore.selectedCategory.name }}</p>
         </div>
         <div>
           <div class="flex items-center gap-2 text-blue-900">
@@ -70,7 +67,24 @@
             </svg>
             <h4 class="text-xl font-semibold">Vacante de Interes:</h4>
           </div>
-          <p class="ml-4">{{ vacancyStore.getVacancyName(appAdmStore.application.vacancy_id) }}</p>
+          <p class="ml-4">
+            {{ vacancyStore.selectedVacancy.position }}
+          </p>
+        </div>
+        <div v-if="appAdmStore.application.cv">
+          <div class="flex items-center gap-2 text-blue-900">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
+            <h4 class="text-xl font-semibold">CV:</h4>
+          </div>
+          <a :href="appAdmStore.application.cv" target="_blank" class="flex items-center justify-center gap-1 ml-3 mr-10 underline underline-offset-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-slate-600 size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+            Ver
+          </a>
         </div>
         <div>
           <div class="flex items-center gap-2 text-blue-900">
@@ -79,7 +93,9 @@
             </svg>
             <h4 class="text-xl font-semibold">Mensaje:</h4>
           </div>
-          <p class="ml-4 overflow-x-hidden text-ellipsis">{{ appAdmStore.application.message }}</p>
+          <div class="overflow-y-auto max-h-[25vh] lg:max-h-[30vh]">
+            <p class="ml-4">{{ appAdmStore.application.message }}</p>
+          </div>
         </div>
       </div>
     </div>

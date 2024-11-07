@@ -1,10 +1,10 @@
 <script setup>
   import { onUnmounted } from 'vue'
   import { useRoute } from 'vue-router'
-  import VacanteForm from '@/components/contacto/Vacante-form.vue'
   import { useContactStore } from '@/stores/contact'
   import { useAlertNotificationStore } from '@/stores/alertNotification'
-  import ContactAlert from '@/components/ContactAlert.vue'
+  import { resetForm, resetErrors } from '@/components/helpers'
+  import VacanteForm from '@/components/contacto/Vacante-form.vue'
   import notificationAlert from '@/components/administracion/notificationAlert.vue'
 
   const route = useRoute()
@@ -12,8 +12,8 @@
   const notificationStore = useAlertNotificationStore()
 
   onUnmounted(() => {
-    contactStore.resetForm()
-    contactStore.resetErrors()
+    resetForm(contactStore.contactForm)
+    resetErrors(contactStore.errors)
   })
 </script>
 <template>
@@ -25,7 +25,7 @@
     <article class="lg:w-2/3 h-full pt-[7vh] lg:pt-10 md:px-[5%] px-[10%]">
       <!-- Contact form -->
       <notificationAlert v-if="notificationStore.showAlert" >{{ notificationStore.alertMsg }}</notificationAlert>
-      <form action="" v-if="route.params.length == 0" @submit.prevent="contactStore.submitContactForm" class="h-[85%] lg:h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] gap-y-2 sm:gap-y-0 2xl:text-2xl xl:text-xl text-lg" novalidate>
+      <form action="" v-if="route.params.vacancyId.length == 0" @submit.prevent="contactStore.submitContactForm" class="h-[85%] lg:h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] gap-y-2 sm:gap-y-0 2xl:text-2xl xl:text-xl text-lg" novalidate>
         <div class="flex flex-col justify-center w-full col-span-2 md:col-span-1">
           <label for="name" class="mb-1 font-semibold uppercase">Nombre</label>
           <input type="text" id="name" name="name" placeholder="Nombre completo" v-model="contactStore.contactForm.name" class="md:h-[40%] max-h-[50%] w-full md:rounded-xl rounded-full outline-none border focus:border-2 border-white px-[3%] py-1 bg-transparent">

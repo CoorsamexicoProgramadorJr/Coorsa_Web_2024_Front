@@ -3,6 +3,7 @@ import { defineStore } from "pinia"
 import { useAlertNotificationStore } from "../alertNotification"
 import { useCategoryStore } from "../categories"
 import ClientService from "@/services/ClientService"
+import { resetErrors, resetForm, setUserId } from "@/components/helpers"
 
 export const useNewCatStore = defineStore('newCategory', () => {
   const alertNotificationStore = useAlertNotificationStore()
@@ -17,14 +18,16 @@ export const useNewCatStore = defineStore('newCategory', () => {
   const categoryDetails = ref(false)
 
   async function submitNewCategory(){
-    console.log(categoryForm)
-    resetCategoryErrors()
+    resetErrors(categoryErrors)
+    if(!categoryForm.user_id) {
+      setUserId(categoryForm)
+    }
     await ClientService.postCategory(categoryForm)
       .then((response) => {
         console.log(response)
         alertNotificationStore.alertMsg = 'Categoria creada exitosamente'
         alertNotificationStore.alertType = 'success'
-        resetCategoryForm()
+        resetForm(categoryForm)
         manageNewForm()
         alertNotificationStore.manageNotificationAlert()
         setTimeout(() => alertNotificationStore.manageNotificationAlert(), 2000)
@@ -34,37 +37,18 @@ export const useNewCatStore = defineStore('newCategory', () => {
         console.log(error)
         if(error.status == 400){
           Object.assign(categoryErrors, error.response.data.errors)
-          console.log(categoryErrors)
-          if(Object.keys(categoryErrors).includes('user_id')){
-            manageNewForm()
-            alertNotificationStore.alertMsg = 'Error, con el usuario'
-            alertNotificationStore.alertType = 'error'
+        }else{
+          alertNotificationStore.alertMsg = 'Ha ocurrido un error inesperado, intenta de nuevo mas tarde.'
+          alertNotificationStore.alertType = 'error'
+          alertNotificationStore.manageNotificationAlert()
+          setTimeout(() => {
             alertNotificationStore.manageNotificationAlert()
-            setTimeout(() => {
-              alertNotificationStore.manageNotificationAlert()
-            }, 2000)
-          }
+          }, 2000)
         }
       })
   }
   
   const manageNewForm = () => visibleNewForm.value = !visibleNewForm.value
-
-  function setUserId(){
-    categoryForm.user_id = localStorage.getItem('User_id')
-  }
-
-  function resetCategoryForm(){
-    Object.keys(categoryForm).forEach((key) => {
-      if(key != 'user_id') categoryForm[key] = ''
-    })
-  }
-
-  function resetCategoryErrors(){
-    Object.keys(categoryErrors).forEach(key => {
-      delete categoryErrors[key]
-    })
-  }
 
   function manageCategoryDetails(){
     categoryDetails.value = !categoryDetails.value
@@ -75,11 +59,12 @@ export const useNewCatStore = defineStore('newCategory', () => {
   }
 
   async function updateCategory(){
-    resetCategoryErrors()
+    resetErrors(categoryErrors)
     await ClientService.updateCategory(category.id, category)
       .then(response => {
         console.log(response)
         alertNotificationStore.alertMsg = 'Categoria actualizada correctamente.'
+        alertNotificationStore.alertType = 'success'
         manageCategoryDetails()
         alertNotificationStore.manageNotificationAlert()
         setTimeout(() => alertNotificationStore.manageNotificationAlert(), 2000)
@@ -89,7 +74,13 @@ export const useNewCatStore = defineStore('newCategory', () => {
         console.log(error)
         if(error.status == 400){
           Object.assign(categoryErrors, error.response.data.errors)
-          console.log(categoryErrors)
+        }else{
+          alertNotificationStore.alertMsg = 'Ha ocurrido un error inesperado, intenta de nuevo mas tarde.'
+          alertNotificationStore.alertType = 'error'
+          alertNotificationStore.manageNotificationAlert()
+          setTimeout(() => {
+            alertNotificationStore.manageNotificationAlert()
+          }, 2000)
         }
       })
   }
@@ -102,9 +93,6 @@ export const useNewCatStore = defineStore('newCategory', () => {
     categoryDetails,
     submitNewCategory,
     manageNewForm,
-    setUserId,
-    resetCategoryForm,
-    resetCategoryErrors,
     manageCategoryDetails,
     selectCategory,
     updateCategory,

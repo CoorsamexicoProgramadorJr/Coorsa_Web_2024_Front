@@ -13,7 +13,7 @@
       center: false,
       slidesPerPage: 1,
       Autoplay: {
-        timeout: 4000,
+        timeout: 2500,
         showProgress: false
       },
     }
@@ -36,11 +36,6 @@
     nombre: 'Josafat Huerta',
     puesto: 'Abogado Corporativo',
     imagen: 'https://storage.googleapis.com/coorsa-mexico-web/img/Josafat_Nahum.jpg'
-  },
-  {
-    nombre: 'Delía Hernandez',
-    puesto: 'Jefe de Contabilidad',
-    imagen: 'https://storage.googleapis.com/coorsa-mexico-web/img/Delia%20Sarai%20Hernandez%20Martinez.jpg'
   },
   {
     nombre: 'Patricia Palma',

@@ -1,9 +1,10 @@
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, reactive } from 'vue'
 import { defineStore } from "pinia"
 import ClientService from '@/services/ClientService'
 
 export const useCategoryStore = defineStore('categories', () => {
   const categories = ref([])
+  const selectedCategory = reactive({})
 
   onBeforeMount(() => {
     getCategories()
@@ -17,15 +18,18 @@ export const useCategoryStore = defineStore('categories', () => {
       .catch(error => console.log('Something went wrong. ', error))
   }
 
-  function getCategoryName(id){
-    for(let category of categories.value){
-      if(category.id == id) return category.name
-    }
+  async function getCategoryById(id){
+    await ClientService.getCategoryById(id)
+      .then(response => {
+        Object.assign(selectedCategory, response.data.data)
+      })
+      .catch(error => console.log(error))
   }
 
   return {
     categories,
+    selectedCategory,
     getCategories,
-    getCategoryName,
+    getCategoryById,
   }
 })

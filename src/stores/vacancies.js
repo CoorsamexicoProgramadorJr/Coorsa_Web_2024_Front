@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { defineStore } from "pinia"
 import { useRouter } from 'vue-router'
 import ClientService from '@/services/ClientService'
@@ -9,6 +9,7 @@ export const useVacancyStore = defineStore('vacancies', () => {
   const applicationStore = useApplicationStore()
   const showVacanciesList = ref(false)
   const vacancies = ref([])
+  const selectedVacancy = reactive({})
 
   async function getVacanciesByCategoryId(category_Id) {
     await ClientService.getVacanciesByCategory(category_Id)
@@ -28,7 +29,6 @@ export const useVacancyStore = defineStore('vacancies', () => {
   const applyVacancy = (vacancy) => {
     applicationStore.applicationForm.vacancy_id = vacancy.id
     applicationStore.applicationForm.category_id = vacancy.category_id
-    applicationStore.resetErrors()
     router.push({ name: 'contacto', params: { vacancyId: vacancy.id}})
   }
 
@@ -40,19 +40,22 @@ export const useVacancyStore = defineStore('vacancies', () => {
       .catch(error => console.log(error))
   }
 
-  function getVacancyName(id){
-    for(let vacancy of vacancies.value){
-      if(vacancy.id == id)  return vacancy.position
-    }
+  async function getVacancyById(id){
+    await ClientService.getVacancyById(id)
+      .then((response) => {
+        Object.assign(selectedVacancy, response.data.data)
+      })
+      .catch(error => console.log(error))
   }
 
   return {
     showVacanciesList,
     vacancies,
+    selectedVacancy,
     chgVacancy,
     openList,
     applyVacancy,
     getAllVacancies,
-    getVacancyName,
+    getVacancyById,
   }
 })

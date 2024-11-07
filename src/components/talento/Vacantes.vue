@@ -6,11 +6,11 @@
   const vacancyStore = useVacancyStore()
 </script>
 <template>
-  <section class="w-[100vw] min-h-[92vh] p-[3%] bg-[url('/img/fondo-testimonios.jpg')] bg-cover bg-bottom text-white" id="sec-vacantes">
+  <section class="w-[100vw] min-h-[92vh] p-[3%] bg-[url('/img/fondo-testimonios.jpg')] bg-cover bg-bottom text-white" id="vacantes">
     <h2 class="mb-10 text-4xl font-bold uppercase lg:text-6xl md:text-5xl lg:mb-20 lg:text-center">Nuestras Vacantes</h2>
-    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-[5%] xl:text-4xl lg:text-3xl text-2xl lg:space-y-0 space-y-10">
+    <div class="flex lg:flex-row flex-col items-center justify-center w-full max-h-[40%] xl:gap-[10%] lg:gap-8 xl:text-4xl lg:text-3xl text-2xl lg:space-y-0 space-y-10">
       <template v-for="(category, index) in categoryStore.categories" :key="category.id">
-        <button v-if="index < 3" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-1/4 w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold p-[1%] border-2 border-white uppercase lg:break-words lg:tracking-tight transition ease-in-out delay-75 hover:scale-110 hover:bg-white/20">
+        <button v-if="index < 3" @click="vacancyStore.openList(category.id)" class="xl:w-1/4 lg:w-[28%] w-[80%] lg:h-full h-16 lg:min-h-80 lg:rounded-2xl rounded-full font-semibold p-[1%] border-2 border-white uppercase lg:break-words lg:tracking-tight transition ease-in-out delay-75 hover:scale-110 hover:bg-white/20">
           {{ category.name }}
         </button>
       </template>

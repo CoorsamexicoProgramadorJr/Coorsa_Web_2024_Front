@@ -1,13 +1,13 @@
 <script setup>
 import { onBeforeMount } from 'vue'
 import { useNewCatStore } from '@/stores/administration/newCategory'
+import { resetForm, resetErrors } from '@/components/helpers'
 
 const newCatStore = useNewCatStore()
 
 onBeforeMount(() => {
-  newCatStore.setUserId()
-  newCatStore.resetCategoryForm()
-  newCatStore.resetCategoryErrors()
+  resetForm(newCatStore.categoryForm)
+  resetErrors(newCatStore.categoryErrors)
 })
 
 </script>

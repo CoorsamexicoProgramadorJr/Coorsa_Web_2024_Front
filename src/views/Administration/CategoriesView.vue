@@ -17,12 +17,12 @@
   })
 </script>
 <template>
-  <section class="h-screen pt-[8vh] p-3 lg:ml-[25%] lg:w-3/4 lg:pt-5">
+  <section class="h-screen ml-[16.7%] w-5/6 p-3 lg:ml-[25%] lg:w-3/4 lg:pt-5">
     <notificationAlert v-if="alertNotificationStore.showAlert">{{ alertNotificationStore.alertMsg }}</notificationAlert>
     
-    <h2 class="my-4 text-2xl font-bold text-center text-blue-900 uppercase lg:text-3xl">Administración de Categorias de Vacantes</h2>
-    <h3 class="mt-8 text-xl font-semibold lg:text-2xl">Categorias Disponibles</h3>
-    <div class="px-2 mt-5 lg:px-3">
+    <h2 class="my-4 text-2xl font-extrabold text-center text-blue-900 uppercase lg:text-3xl">Administración de Categorias</h2>
+    <h3 class="mt-8 text-xl font-bold lg:text-2xl">Categorias Disponibles</h3>
+    <div class="px-2 mt-5 lg:px-3 max-h-[70%] overflow-y-auto">
       <div v-for="category in categoryStore.categories" :key="category.id" @click="newCatStore.selectCategory(category); newCatStore.manageCategoryDetails()" class="flex items-center justify-between h-12 text-gray-600 border-y hover:bg-gray-400 hover:text-white hover:cursor-pointer" :class="{ 'opacity-50' : category.status == 0 }">
         <h3 class="text-lg font-semibold lg:text-xl">{{ category.name }}</h3>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 stroke-2 lg:w-7">
@@ -35,7 +35,7 @@
 
     <CategoryDetails v-if="newCatStore.categoryDetails" />
 
-    <button @click="newCatStore.manageNewForm()" class="absolute z-0 text-blue-900 right-3 bottom-3">
+    <button @click="newCatStore.manageNewForm()" class="absolute z-0 text-blue-900 bottom-3 right-3">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
       </svg>

@@ -2,20 +2,18 @@
   import { onBeforeMount } from 'vue'
   import { useNewVacancyStore } from '@/stores/administration/newVacancy'
   import { useCategoryStore } from '@/stores/categories'
+  import { resetErrors } from '@/components/helpers'
 
   const newVacancyStore = useNewVacancyStore()
   const categoryStore = useCategoryStore()
 
-  onBeforeMount(() => newVacancyStore.resetVacancyErrors())
-
-  console.log(newVacancyStore.newVacancy)
-  console.log(categoryStore.categories)
+  onBeforeMount(() => resetErrors(newVacancyStore.vacancyErrors))
 </script>
 
 <template>
-  <div class="absolute top-0 left-0 w-screen h-screen bg-black/50 lg:w-3/4 lg:ml-[25%] z-[1]">
+  <div class="absolute top-0 left-0 w-screen h-screen bg-black/50 lg:w-3/4 lg:ml-[25%] z-[2]">
     <div class="w-[85%] mx-auto max-h-[92vh] top-[5%] lg:top-[7%] bg-white z-[3] relative rounded-2xl p-4 overflow-y-auto md:w-[80%]">
-      <button @click="newVacancyStore.manageVacancyDetails" class="float-right flex items-center justify-center text-blue-900 z-[4]">
+      <button @click="newVacancyStore.manageVacancyDetails" class="fixed right-[7%] md:right-[10%] lg:right-[8%] top-[5%] lg:top-[7%] flex items-center justify-center text-blue-900 z-[4]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 stroke-2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>

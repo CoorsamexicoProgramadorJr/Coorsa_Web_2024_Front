@@ -13,9 +13,7 @@ export const useUserStore = defineStore('user', () => {
   async function getUserInfo(){
     await ClientService.getUser(userId)
       .then((response) => {
-        console.log(response)
         Object.assign(user, response.data.data)
-        console.log(user)
       })
       .catch(error => console.log(error))
   }

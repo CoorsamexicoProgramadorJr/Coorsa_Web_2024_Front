@@ -1,11 +1,12 @@
 <script setup>
   import { onUnmounted } from 'vue'
   import { useLoginStore } from '@/stores/login'
+  import { resetForm } from '@/components/helpers'
 
   const loginStore = useLoginStore()
 
   onUnmounted(() => {
-    loginStore.resetForm()
+    resetForm(loginStore.loginForm)
   })
 </script>
 

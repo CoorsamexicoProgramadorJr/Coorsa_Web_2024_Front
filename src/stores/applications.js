@@ -3,6 +3,7 @@ import { useRouter, useRoute } from "vue-router"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
 import { useAlertNotificationStore } from "./alertNotification"
+import { resetErrors, resetForm } from "@/components/helpers"
 
 export const useApplicationStore = defineStore('application', () => {
   const notificationStore = useAlertNotificationStore()
@@ -38,7 +39,7 @@ export const useApplicationStore = defineStore('application', () => {
     
     if(uploading.value === false){
       sending.value = true
-      resetErrors()
+      resetErrors(applicationForm)
       await ClientService.postApplication(applicationForm)
         .then(response => {
           console.log(response)
@@ -46,8 +47,8 @@ export const useApplicationStore = defineStore('application', () => {
           notificationStore.alertMsg = 'Postulación enviada correctamente.'
           notificationStore.manageNotificationAlert()
           
-          resetAppForm()
-          resetErrors()
+          resetForm(applicationForm)
+          resetErrors(applicationForm)
         })
         .catch(error => {
           console.log(error)
@@ -66,27 +67,8 @@ export const useApplicationStore = defineStore('application', () => {
         })
         setTimeout(() => {
             notificationStore.manageNotificationAlert()
-            if(Object.keys(errors).length == 0){
-              router.push({ name: 'talento' })
-            }
+            if(Object.keys(errors).length == 0) router.push({ name: 'talento' })
         }, 2000)
-    }
-  }
-
-  function resetAppForm(){
-    applicationForm.name = ''
-    applicationForm.area_code_id = ''
-    applicationForm.phone = ''
-    applicationForm.email = ''
-    applicationForm.category_id = ''
-    applicationForm.vacancy_id = ''
-    applicationForm.message = ''
-    applicationForm.cv = ''
-  }
-
-  function resetErrors(){
-    for(var member in errors){
-      delete errors[member]
     }
   }
 
@@ -102,7 +84,6 @@ export const useApplicationStore = defineStore('application', () => {
       .then(({ data }) => {
         console.log(data)
         applicationForm.cv = data.public_url
-        // console.log(applicationForm.cv)
       })
       .catch((error) => {
         console.log(error)
@@ -129,8 +110,6 @@ export const useApplicationStore = defineStore('application', () => {
     applicationForm,
     submitApplication,
     manageCv,
-    resetAppForm,
-    resetErrors,
     manageCv,
   }
 })

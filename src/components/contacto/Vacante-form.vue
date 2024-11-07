@@ -7,6 +7,7 @@
   import { useApplicationStore } from '@/stores/applications'
   import { useAlertNotificationStore } from '@/stores/alertNotification'
   import notificationAlert from '../administracion/notificationAlert.vue'
+  import { resetForm, resetErrors } from '../helpers'
 
   const route = useRoute()
   const vacancyStore = useVacancyStore()
@@ -22,7 +23,6 @@
     if(vacancyStore.vacancies.length == 0){
       await vacancyStore.getAllVacancies()
     }
-    console.log(appStore.applicationForm)
     if(!appStore.applicationForm.vacancy_id){
       console.log('No category id')
       for(let vacancy of vacancyStore.vacancies){
@@ -34,7 +34,8 @@
   })
 
   onUnmounted(() => {
-    appStore.resetAppForm()
+    resetForm(appStore.applicationForm)
+    resetErrors(appStore.errors)
   })
 </script>
 <template>

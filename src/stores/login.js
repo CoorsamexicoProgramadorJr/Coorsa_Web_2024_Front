@@ -2,6 +2,7 @@ import { ref, reactive, watch } from "vue"
 import { useRouter } from "vue-router"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
+import { resetErrors, resetForm } from "@/components/helpers"
 
 export const useLoginStore = defineStore('login', () => {
   const router = useRouter()
@@ -22,51 +23,36 @@ export const useLoginStore = defineStore('login', () => {
   })
 
   async function login(){
-    resetErrors()
+    resetErrors(errors)
     sending.value = true
-    console.log(loginForm)
     await ClientService.attempLogin(loginForm)
       .then((response) => {
         console.log(response)
         userToken.value = response.data.access_token
         saveToLocalStorage('Bearer Token', userToken.value)
         saveToLocalStorage('User_id', response.data.user.id)
-        resetForm()
-        resetErrors()
+        resetForm(loginForm)
         router.push('/panel-principal')
       })
       .catch(error => {
+        console.log(error)
         if(error.status == 400){
-          console.log(error.response.data.errors)
           Object.assign(errors, error.response.data.errors)
         }else if(error.status == 404){
           Object.assign(errors, error.response.data)
-          console.log(error.response.data)
         }else{
           alert('Ha ocurrido un error inesperado. Por favor intenta de nuevo mas tarde.')
-          console.log(error)
         }
       })
       .finally(() => {
         sending.value = false
-        console.log(errors)
         console.log(userToken.value)
+        userToken.value = ''
       })
   }
 
   function saveToLocalStorage(key, value){
     localStorage.setItem(key, JSON.stringify(value))
-  }
-
-  function resetForm(){
-    loginForm.email = ''
-    loginForm.password = ''
-  }
-
-  function resetErrors(){
-    for(var member in errors){
-      delete errors[member]
-    }
   }
 
   async function logOut(){
@@ -91,9 +77,7 @@ export const useLoginStore = defineStore('login', () => {
     passwordVisibility,
     errors,
     sending,
-    userToken,
     login,
-    resetForm,
     logOut
   }
 })

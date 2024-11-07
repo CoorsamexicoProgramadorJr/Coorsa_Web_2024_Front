@@ -21,7 +21,7 @@ export const useConsultStore = defineStore('consults', () => {
 
   function selectConsult(consultData){
     Object.assign(consult, consultData)
-    console.log(consult)
+    manageConsultDetails()
   }
 
   return {

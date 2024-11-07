@@ -1,10 +1,11 @@
 <script setup>
   import { onBeforeMount } from 'vue'
   import { useNewCatStore } from '@/stores/administration/newCategory'
+  import { resetErrors } from '@/components/helpers'
 
   const newCatStore = useNewCatStore()
 
-  onBeforeMount(() => newCatStore.resetCategoryErrors())
+  onBeforeMount(() => resetErrors(newCatStore.categoryErrors))
 </script>
 
 <template>
@@ -20,7 +21,7 @@
         <div>
           <div class="flex flex-col md:gap-4 md:flex-row md:items-center">
             <label class="text-lg font-semibold text-gray-600 lg:text-xl" for="name">Nombre</label>
-            <input type="text" v-model="newCatStore.category.name" placeholder="Gerencial" name="name" id="name" class="flex-1 my-1 border-b border-gray-600 outline-none">
+            <input type="text" v-model="newCatStore.category.name" placeholder="Gerencial" name="name" id="name" class="flex-1 my-1 text-lg border-b border-gray-600 outline-none">
           </div>
           <p v-if="Object.keys(newCatStore.categoryErrors).length != 0 && Object.keys(newCatStore.categoryErrors).includes('name')" class="text-sm text-red-700">
             {{ newCatStore.categoryErrors.name[0] }}

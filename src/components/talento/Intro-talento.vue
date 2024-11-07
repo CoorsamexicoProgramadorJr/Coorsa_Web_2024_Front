@@ -6,7 +6,7 @@
       <h1 class="text-6xl font-light 2xl:text-8xl">Bienvenidos a <span class="font-bold">COORSA</span></h1>
       <h2 class="text-5xl font-semibold 2xl:text-6xl">Soluciones Logísticas</h2>
       <h3 class="2xl:text-5xl text-4xl font-light xl:mt-[2%]">Un Lugar para Crecer y Desarrollarse</h3>
-      <a href="#sec-vacantes" class="font-semibold w-1/3 bg-red-700 text-center rounded-2xl 2xl:py-3 py-1 mt-[5%] 2xl:text-3xl xl:text-2xl md:text-xl text-lg uppercase">
+      <a href="#vacantes" class="font-semibold w-1/3 bg-red-700 text-center rounded-2xl 2xl:py-3 py-1 mt-[5%] 2xl:text-3xl xl:text-2xl md:text-xl text-lg uppercase">
         Vacantes
       </a>
     </div>

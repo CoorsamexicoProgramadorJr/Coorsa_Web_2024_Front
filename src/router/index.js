@@ -72,9 +72,9 @@ const router = createRouter({
           component: () => import('@/views/Administration/VacanciesView.vue')
         },
         {
-          path: 'tipos-vacantes',
-          name: 'Tipos de Vacantes',
-          component: () => import('@/views/Administration/VacancieTypesView.vue')
+          path: 'categorias',
+          name: 'Categorias',
+          component: () => import('@/views/Administration/CategoriesView.vue')
         },
         {
           path: 'consultas',

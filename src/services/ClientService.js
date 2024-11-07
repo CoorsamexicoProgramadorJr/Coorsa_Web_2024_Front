@@ -49,16 +49,16 @@ export default {
       }
     })
   },
-  //States
+  //* States
   getStates(){
-    return api.get('/fullStates')
+    return api('/fullStates')
   },
   getServices(){
-    return api.get('/services')
+    return api('/services')
   },
   // Consults
   getConsults(){
-    return api.get('/consults', {
+    return api('/consults', {
       headers: {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
       }
@@ -75,7 +75,7 @@ export default {
     })
   },
   getApplications(){
-    return api.get('/applications', {
+    return api('/applications', {
       headers: {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('Bearer Token'))
       }

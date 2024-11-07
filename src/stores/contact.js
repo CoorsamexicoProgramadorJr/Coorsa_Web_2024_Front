@@ -2,11 +2,12 @@ import { reactive, ref, onBeforeMount } from "vue"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
 import { useAlertNotificationStore } from "./alertNotification"
+import { resetErrors, resetForm } from "@/components/helpers"
 
 export const useContactStore = defineStore('contact', () => {
   const notificationStore = useAlertNotificationStore()
   const states = ref([])
-  const errors = ref([])
+  const errors = reactive({})
   const services = ref([])
   const sending = ref(false)
   const contactForm = reactive({
@@ -42,49 +43,33 @@ export const useContactStore = defineStore('contact', () => {
 
   async function submitContactForm(){
     sending.value = true 
+    resetErrors(errors)
     await ClientService.postConsult(contactForm)
       .then((response) => {
-        // console.log(response)
         notificationStore.alertType = 'success'
         notificationStore.alertMsg = 'Consulta enviada correctamente.'
         notificationStore.manageNotificationAlert()
 
-        resetForm()
-        resetErrors()
-        console.log(contactForm)
+        resetForm(contactForm)
+        resetErrors(errors)
       })
       .catch( error => {
+        console.log(error)
         notificationStore.alertType = 'error'
 
         if(error.status != 400){
-          console.log(error)
           notificationStore.alertMsg = 'Error inesperado, trata de nuevo mas tarde.'
           notificationStore.manageNotificationAlert()
           return
         }
         notificationStore.alertMsg = 'Revisa que los campos esten llenados de forma correcta.'
         notificationStore.manageNotificationAlert()
-        Object.assign(errors.value, error.response.data.errors)
-        // console.log(errors.value)
+        Object.assign(errors, error.response.data.errors)
       })
       .finally(() => {
         sending.value = false
+        if(notificationStore.showAlert) setTimeout(() => notificationStore.manageNotificationAlert(), 2000)
       })
-      setTimeout(() => notificationStore.manageNotificationAlert(), 2000)
-  }
-
-  function resetForm(){
-    contactForm.name = ''
-    contactForm.phone = ''
-    contactForm.email = ''
-    contactForm.message = ''
-    contactForm.area_code_id = ''
-    contactForm.service_id = ''
-    contactForm.state_id = ''
-  }
-
-  function resetErrors(){
-    delete errors.errors
   }
   
   function getState(id){
@@ -109,12 +94,10 @@ export const useContactStore = defineStore('contact', () => {
     states,
     errors,
     services,
+    sending,
     contactForm,
     requestStates,
     submitContactForm,
-    resetForm,
-    resetErrors,
-    sending,
     getState,
     getAreaCode,
     getService,
