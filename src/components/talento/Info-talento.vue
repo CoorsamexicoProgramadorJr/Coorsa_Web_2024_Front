@@ -32,15 +32,15 @@
     </article>
     
     <!-- More info -->
-    <article class="w-screen text-white bg-[#2D2E38] h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-3xl lg:text-2xl text-xl">
+    <article class="w-screen text-white bg-[#2D2E38] h-1/2 max-h-[92vh] p-[5%] flex flex-col justify-between xl:text-4xl lg:text-2xl text-xl">
       <div class="flex lg:flex-row flex-col justify-around items-center w-full h-[45%]">
         <p class="w-1/2">
           Estamos comprometidos a proporcionar un entorno de trabajo dinámico y enriquecedor donde cada
           Colaborador pueda alcanzar su máximo potencial. Somos líderes en soluciones logísticas y creemos que nuestro éxito depende del 
           talento y la dedicación de nuestro equipo.
         </p>
-        <figure class="lg:max-w-[40%] w-1/2 bg-gray-900 overflow-hidden rounded-2xl">
-          <img src="/img/RecursoMob.png" alt="Imagen entorno" class="max-w-full max-h-full lg:mx-auto">
+        <figure class="w-1/2 max-h-full overflow-hidden bg-gray-900 lg:w-5/12 rounded-2xl">
+          <img src="/img/RecursoMob.png" alt="Imagen entorno" class="size-9/12">
         </figure>
       </div>
       <div class="flex flex-col lg:flex-row-reverse justify-around items-center w-full h-[45%]">
@@ -48,8 +48,8 @@
           Nuestra cultura se basa en la innovación, la Colaboración y el crecimiento continuo. Aquí, encontrarás oportunidades para 
           desarrollar tus habilidades, asumir nuevos retos y hacer una diferencia real en la industria logística.
         </p>
-        <figure class="lg:max-w-[40%] w-1/2 max-h-full bg-gray-900 rounded-2xl overflow-hidden">
-          <img src="/img/maniobras.png" alt="Imagen maniobras" class="max-w-[80%] max-h-full mx-auto">
+        <figure class="w-1/2 max-h-full overflow-hidden bg-gray-900 lg:w-5/12 rounded-2xl">
+          <img src="/img/maniobras.png" alt="Imagen maniobras" class="mx-auto size-2/3">
         </figure>
       </div>
     </article>

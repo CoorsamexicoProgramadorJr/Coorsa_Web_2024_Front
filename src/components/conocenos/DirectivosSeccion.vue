@@ -143,4 +143,10 @@
       @apply grayscale;
     }
   }
+
+  @media screen and (min-Width: 1440px){
+    #directivosCarousel .f-carousel__slide {
+      width: calc((100% - 2%) / 4);
+    }
+  }
 </style>

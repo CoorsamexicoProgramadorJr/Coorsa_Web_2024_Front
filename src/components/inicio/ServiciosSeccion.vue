@@ -65,4 +65,11 @@
       --f-carousel-spacing: 2%;
     }
   }
+
+  @media screen and (min-width: 1440px){
+    #myCarousel {
+      --f-carousel-slide-width: 20%;
+      --f-carousel-spacing: 2%;
+    }
+  }
 </style>

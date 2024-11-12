@@ -38,6 +38,10 @@
       quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ex voluptatibus quibusdam iusto beatae eveniet non in perspiciatis, distinctio iste, facere eum saepe assumenda! Architecto fugiat doloribus nam temporibus dolores?",
       name: "Alejandro"
     },
+    {
+      quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ex voluptatibus quibusdam iusto beatae eveniet non in perspiciatis, distinctio iste, facere eum saepe assumenda! Architecto fugiat doloribus nam temporibus dolores?",
+      name: "Alejandro"
+    },
   ]
 </script>
 <template>
@@ -87,6 +91,13 @@
   @media screen and (min-width: 1024px) {
     #TstCarousel {
       --f-carousel-slide-width: calc((100% - 6%) / 3);
+      --f-carousel-spacing: 3%;
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    #TstCarousel {
+      --f-carousel-slide-width: calc((100% - 6%) / 5);
       --f-carousel-spacing: 3%;
     }
   }

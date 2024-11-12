@@ -82,7 +82,7 @@
             </svg>
           </a>
         </div>
-        <RouterLink to="/contacto" class=" text-center py-2 uppercase font-bold bg-red-700 xl:w-[40%] lg:w-2/3 h-10 rounded-xl hover:bg-red-800">Contacto</RouterLink>
+        <RouterLink to="/contacto" class="h-10 px-1 py-2 font-bold text-center uppercase bg-red-700 lg:w-3/4 rounded-xl hover:bg-red-800">Contacto</RouterLink>
       </div>
     </article>
     <!-- Lower footer -->
