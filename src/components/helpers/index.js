@@ -12,13 +12,13 @@ export const formatDate = date => {
   return newDate.toLocaleDateString('es-MX', options);
 }
 
-export function resetErrors(errors){
+export function resetErrors(errors){  // todo: delete & incorparate as an object method in each store
   Object.keys(errors).forEach(key => {
     delete errors[key]
   })
 }
 
-export function resetForm(form){
+export function resetForm(form){  // todo: delete & incorparate as an object method in each store
   Object.keys(form).forEach((key) => {
     form[key] = ''
   })

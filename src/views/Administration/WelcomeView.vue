@@ -18,6 +18,10 @@
       page: 'Postulaciones',
       actions: ['See', '', '', '']
     },
+    {
+      page: 'Directivos',
+      actions: ['See', 'Create', 'Edit', 'Delete']
+    },
   ]
 </script>
 <template>

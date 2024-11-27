@@ -101,7 +101,6 @@ export const useApplicationStore = defineStore('application', () => {
     setTimeout(() => notificationStore.manageNotificationAlert(), 3000)
   }
 
-
   return {
     errors,
     sending,

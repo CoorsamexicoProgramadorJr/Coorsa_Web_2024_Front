@@ -82,9 +82,14 @@ const router = createRouter({
           component: () => import('@/views/Administration/ConsultsView.vue')
         },
         {
-          path: 'Postulaciones',
+          path: 'postulaciones',
           name: 'Postulaciones',
           component: () => import('@/views/Administration/ApplicationsView.vue')
+        },
+        {
+          path: 'directivos',
+          name: 'Directivos',
+          component: () => import('@/views/Administration/DirectivesView.vue')
         }
       ]
     }
