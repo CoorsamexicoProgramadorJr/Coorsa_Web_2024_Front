@@ -39,10 +39,7 @@
         <router-link to="/servicios" class="bg-[url('/img/delivery.jpg')] bg-cover bg-center rounded-xl row-start-1 col-start-3 flex justify-center items-center text-2xl">
           Delivery Management
         </router-link>
-        <div class="flex flex-col justify-between w-full col-start-3 row-start-2 row-end-4 p-3 text-xl font-bold text-black bg-white rounded-xl">
-          <h3>Soluciones Logísticas Innovadoras</h3>
-          <h4>Para Impulsar tu Empresa</h4>
-        </div>
+        <router-link to="/servicios" class="col-start-3 row-start-2 row-end-4 bg-[url('/img/smarkglove.jpg')] bg-cover bg-center rounded-xl"></router-link>
       </div>
     </div>
     <router-link to="/conocenos" class="text-xl hover:font-bold" active-class="font-extrabold">Conócenos</router-link>

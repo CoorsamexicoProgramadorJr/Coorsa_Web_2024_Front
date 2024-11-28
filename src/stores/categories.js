@@ -19,7 +19,7 @@ export const useCategoryStore = defineStore('categories', () => {
   }
 
   async function getCategoryById(id){
-    await ClientService.getCategoryById(id)
+    await ClientService.getCategory(id)
       .then(response => {
         Object.assign(selectedCategory, response.data.data)
       })

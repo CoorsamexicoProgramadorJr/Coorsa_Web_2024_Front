@@ -1,9 +1,10 @@
 <script setup>
-  import CoorsaLogo from '../icons/CoorsaLogo.vue';
+  import CoorsaLogo from '../icons/CoorsaLogo.vue'
+  import Logo from '../icons/Logo.vue'
 </script>
 <template>
-  <section class="relative w-screen h-screen">
-    <video class="object-fill object-center size-full backdrop-opacity-75" src="https://storage.googleapis.com/coorsa-mexico-web/Videos/fondo%20portada.mp4" autoplay muted loop>
+  <section class="relative w-screen h-screen overflow-hidden">
+    <video class="object-fill object-center size-full backdrop-opacity-75" src="https://storage.googleapis.com/coorsa-mexico-web/Videos/FONDO%20INICIO.mp4" autoplay muted loop>
       Your browser does not support the video tag.
     </video>
     <div class="size-full bg-black/40 z-[1] absolute top-0 left-0 backdrop-blur-sm p-10">
@@ -15,6 +16,7 @@
         </h1>
       </div>
     </div>
+    <Logo class="absolute -bottom-[30%] lg:-bottom-10 -right-[60%] lg:-right-[38%] text-transparent size-full lg:size-[80%] z-[1] stroke-white" />
   </section>
 </template>
 
