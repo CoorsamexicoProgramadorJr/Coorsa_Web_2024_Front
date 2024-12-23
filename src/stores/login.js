@@ -2,16 +2,23 @@ import { ref, reactive, watch } from "vue"
 import { useRouter } from "vue-router"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
-import { resetErrors, resetForm } from "@/components/helpers"
 
 export const useLoginStore = defineStore('login', () => {
   const router = useRouter()
   const loginForm = reactive({
-    email: '',
-    password: ''
+    data: {
+      email: '',
+      password: ''
+    },
+    errors: {},
+    resetData: function(){
+      Object.keys(this.data).forEach(key => this.data[key] = '')
+    },
+    resetErrors: function(){
+      Object.keys(this.errors).forEach(key => delete this.errors[key])
+    }
   })
   const passwordVisibility = ref(false)
-  const errors = reactive({})
   const sending = ref(false)
   const userToken = ref('')
   const type = ref('password')
@@ -23,23 +30,25 @@ export const useLoginStore = defineStore('login', () => {
   })
 
   async function login(){
-    resetErrors(errors)
+    loginForm.resetErrors()
+
     sending.value = true
-    await ClientService.attempLogin(loginForm)
+    console.log(loginForm.data)
+    await ClientService.attempLogin(loginForm.data)
       .then((response) => {
         console.log(response)
         userToken.value = response.data.access_token
         saveToLocalStorage('Bearer Token', userToken.value)
         saveToLocalStorage('User_id', response.data.user.id)
-        resetForm(loginForm)
+        loginForm.resetData()
         router.push('/panel-principal')
       })
       .catch(error => {
         console.log(error)
         if(error.status == 400){
-          Object.assign(errors, error.response.data.errors)
+          Object.assign(loginForm.errors, error.response.data.errors)
         }else if(error.status == 404){
-          Object.assign(errors, error.response.data)
+          Object.assign(loginForm.errors, error.response.data)
         }else{
           alert('Ha ocurrido un error inesperado. Por favor intenta de nuevo mas tarde.')
         }
@@ -51,9 +60,7 @@ export const useLoginStore = defineStore('login', () => {
       })
   }
 
-  function saveToLocalStorage(key, value){
-    localStorage.setItem(key, JSON.stringify(value))
-  }
+  const saveToLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
   async function logOut(){
     await ClientService.attemptLogOut()
@@ -68,15 +75,14 @@ export const useLoginStore = defineStore('login', () => {
       })
   }
 
-  function removeFromLocalStorage(key){
-    localStorage.removeItem(key)
-  }
+  const removeFromLocalStorage = key => localStorage.removeItem(key);
 
   return {
     loginForm,
     passwordVisibility,
-    errors,
     sending,
+    userToken,
+    type,
     login,
     logOut
   }

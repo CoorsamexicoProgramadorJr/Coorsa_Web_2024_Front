@@ -86,7 +86,7 @@
 <template>
   <section class="w-screen h-screen p-10 bg-[url('/img/fondo-aliados.jpg')] bg-cover text-white">
     <h2 class="mt-5 text-4xl font-semibold text-center xl:text-7xl lg:text-7xl md:text-3xl md:text-left">Nuestros Aliados</h2>
-    <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:grid-rows-3 grid-rows-6 gap-2 w-[90%] mx-auto my-[5%] md:max-h-[75%] max-h-[85%]">
+    <div class="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 md:grid-rows-3 grid-rows-6 gap-2 w-[90%] mx-auto my-[5%] max-h-[78%] lg:max-h-[85%]">
       <div v-for="(logo, index) in logos" :key="index" class="flex items-center justify-center" :class="logo.containerClass">
         <img :src="logo.src" :alt="logo.alt" :class="logo.class"> 
       </div>

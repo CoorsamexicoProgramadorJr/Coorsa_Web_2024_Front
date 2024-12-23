@@ -1,7 +1,6 @@
 <script setup>
   import { RouterLink, useRoute } from 'vue-router'
   import { Fancybox } from "@fancyapps/ui"
-  import ApplicationMark from '@/components/icons/ApplicationMark.vue'
   import CoorsaLogo from './icons/CoorsaLogo.vue'
   
   const links = [
@@ -109,7 +108,7 @@
   </footer>
   
   <!-- Mobile footer -->
-  <footer class="w-screen h-[42vh] bg-[url('/img/fondo-pie.jpg')] bg-cover bg-center border-t text-white z-[2] relative lg:hidden block p-1">
+  <footer class="w-screen h-[50vh] bg-[url('/img/fondo-pie.jpg')] bg-cover bg-center border-t text-white z-[2] relative lg:hidden block px-1 py-2">
     <!-- Upper footer -->
     <div class="flex justify-around items-center gap-[1%] w-full h-3/6">
       <div class="flex flex-col items-center justify-around w-3/12 h-full py-[1%] font-semibold">

@@ -3,6 +3,39 @@
   import CoorsaLogo from './icons/CoorsaLogo.vue'
 
   const router = useRouter()
+
+  const sublinks = [
+    {
+      title: 'Warehouse',
+      classes: "bg-[url('/img/ware.jpg')] col-start-1 row-start-3 row-end-4",
+      to: '/servicios'
+    },
+    {
+      title: 'Camiones de Patio',
+      classes: "bg-[url('/img/camiones.jpg')] col-start-2 row-start-1",
+      to: '/servicios'
+    },
+    {
+      title: 'Maniobras',
+      classes: "bg-[url('/img/maniobras-h.jpg')] col-start-2 row-start-2",
+      to: '/servicios'
+    },
+    {
+      title: 'Desarrollo de Tecnologías',
+      classes: "bg-[url('/img/ti.jpg')] col-start-2 row-start-3",
+      to: '/servicios'
+    },
+    {
+      title: 'Delivery Management',
+      classes: "bg-[url('/img/delivery.jpg')] row-start-1 col-start-3",
+      to: '/servicios'
+    },
+    {
+      title: '',
+      classes: "bg-[url('/img/smarkglove.jpg')] col-start-3 row-start-2 row-end-4",
+      to: '/servicios'
+    },
+  ]
 </script>
 <template>
    <nav class="fixed top-0 hidden z-[2] bg-[#0D0C15] rounded-[43px] h-[62px] lg:flex text-white px-10 right-[50%] items-center gap-5 translate-x-1/2">
@@ -24,22 +57,9 @@
           <h3 class="w-full text-3xl font-semibold text-left">Servicios</h3>
           <button @click="router.push('/servicios')" class="w-2/3 h-8 mx-auto mb-3 text-xl text-center bg-red-700 rounded-2xl hover:bg-red-800">Más</button>
         </div>
-        <router-link to="/servicios" class="bg-[url('/img/ware.jpg')] bg-cover bg-center rounded-xl col-start-1 row-start-3 row-end-4 flex justify-center items-center text-2xl">
-          Warehouse
+        <router-link v-for="(sublink, i) in sublinks" :key="i" :class="sublink.classes" :to="sublink.to" class="flex items-center justify-center text-2xl bg-center bg-cover rounded-xl">
+          {{ sublink.title }}
         </router-link>
-        <router-link to="/servicios" class="bg-[url('/img/camiones.jpg')] bg-cover bg-center rounded-xl col-start-2 row-start-1 flex justify-center items-center text-center text-2xl">
-          Camiones de Patio
-        </router-link>
-        <router-link to="/servicios" class="bg-[url('/img/maniobras-h.jpg')] bg-cover bg-center rounded-xl col-start-2 row-start-2 flex justify-center items-center text-2xl">
-          Maniobras
-        </router-link>
-        <router-link to="/servicios" class="bg-[url('/img/ti.jpg')] bg-cover bg-center rounded-xl col-start-2 row-start-3 flex justify-center items-center text-2xl">
-          Desarrollo de Tecnologías
-        </router-link>
-        <router-link to="/servicios" class="bg-[url('/img/delivery.jpg')] bg-cover bg-center rounded-xl row-start-1 col-start-3 flex justify-center items-center text-2xl">
-          Delivery Management
-        </router-link>
-        <router-link to="/servicios" class="col-start-3 row-start-2 row-end-4 bg-[url('/img/smarkglove.jpg')] bg-cover bg-center rounded-xl"></router-link>
       </div>
     </div>
     <router-link to="/conocenos" class="text-xl hover:font-bold" active-class="font-extrabold">Conócenos</router-link>

@@ -2,10 +2,10 @@
 import { ref } from 'vue' 
   import Logo from '@/components/icons/Logo.vue'
 
+  const openMenu = ref(false)
   const manageOpen = () => openMenu.value = !openMenu.value
   const serviciosSubMenu = ref(false)
   const manageSubMenu = () => serviciosSubMenu.value = !serviciosSubMenu.value
-  const openMenu = ref(false)
   
   const submenuLinks = [
     {
@@ -37,9 +37,9 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <nav class="w-full bg-[#0D0C15] h-[8vh] flex justify-between items-center px-[2%] text-white text-lg fixed top-0 left-0 lg:hidden z-[2]">
+  <nav class="w-full bg-[#0D0C15] h-[9vh] flex justify-between items-center px-[2%] py-1 text-white text-lg fixed top-0 left-0 lg:hidden z-[2]">
     <RouterLink to="/">
-      <Logo />
+      <Logo class="w-[95%] mx-auto"/>
     </RouterLink>
     <button @click="manageOpen">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
@@ -51,7 +51,7 @@ import { ref } from 'vue'
         <RouterLink to="/" @click="manageOpen">Inicio</RouterLink>
       </div>
       <div class="flex justify-end py-1">
-        <RouterLink to="/servicios" class="">Servicios</RouterLink>
+        <RouterLink to="/servicios" @click="manageOpen" class="">Servicios</RouterLink>
         <button @click="manageSubMenu" class="ml-[32%] md:ml-[40%]">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
             <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
@@ -60,7 +60,7 @@ import { ref } from 'vue'
       </div>
       <!-- Services subMenu -->
       <div v-if="serviciosSubMenu" class="flex flex-col items-center gap-1 font-semibold bg-[#38383f] divide-y divide-slate-400">
-        <RouterLink to="/servicios" class="flex flex-col w-full gap-[1px] p-1 text-sm" v-for="(submenuLink, index) in submenuLinks" :key="index">
+        <RouterLink to="/servicios" @click="manageOpen(); manageSubMenu()" class="flex flex-col w-full gap-[1px] p-1 text-sm" v-for="(submenuLink, index) in submenuLinks" :key="index">
           {{ submenuLink.text }}
           <span class="text-xs font-light normal-case">{{ submenuLink.description }}</span>
         </RouterLink>

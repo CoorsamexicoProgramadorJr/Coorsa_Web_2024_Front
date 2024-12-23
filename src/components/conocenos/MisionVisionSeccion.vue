@@ -1,17 +1,15 @@
 <script setup></script>
 <template>
-  <section class="w-screen h-screen text-white bg-[url('/img/fondo-aliados.jpg')]">
-    <article class="grid w-full grid-cols-1 grid-rows-2 gap-10 p-10 lg:grid-cols-2 lg:grid-rows-1 place-items-center h-1/2">
-      <h2 class="my-10 text-4xl font-bold text-center text-transparent uppercase text-border lg:text-9xl xl:text-[9rem]">Misión</h2>
-      <p class="text-xl font-light text-left lg:text-3xl xl:text-4xl">
+  <section class="w-screen h-[92vh] text-white bg-[url('/img/fondo-aliados.jpg')]">
+    <article class="flex flex-col items-center justify-around p-8 h-1/2 lg:flex-row">
+      <h2 class="text-4xl text-transparent uppercase text-border lg:text-9xl lg:w-[45%]">Misión</h2>
+      <p class="text-xl font-light lg:w-[45%] lg:text-3xl text-center lg:text-left">
         Eficientar los procesos de las cadenas de suministro, a través de servicios de alta calidad que generen ambientes de innovación logística.
       </p>
     </article>
-    <article class="grid w-full grid-cols-1 grid-rows-2 gap-10 p-10 lg:grid-cols-2 lg:grid-rows-1 place-items-center h-1/2">
-      <h2 class="my-10 text-4xl font-bold text-center text-transparent uppercase text-border lg:text-9xl xl:text-[9rem] lg:col-start-2 lg:row-start-1">
-        Visión
-      </h2>
-      <p class="text-xl font-light text-left lg:text-3xl xl:text-4xl lg:col-start-1 lg:row-start-1">
+    <article class="flex flex-col items-center justify-around p-8 lg:flex-row-reverse h-1/2">
+      <h2 class="text-transparent text-4xl uppercase text-border lg:text-9xl lg:w-[45%]">Visión</h2>
+      <p class="text-xl font-light lg:w-[45%] lg:text-3xl text-center lg:text-left">
         Ser para 2026 la empresa líder en soluciones logísticas en el centro y norte de México, integrados por un equipo de personas líderes en la 
         industria que nos conduzcan a la innovación de procesos y herramientas en las cadenas de suministro, convirtiéndonos en socios estratégicos 
         de nuestros clientes.

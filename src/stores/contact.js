@@ -2,22 +2,31 @@ import { reactive, ref, onBeforeMount } from "vue"
 import { defineStore } from "pinia"
 import ClientService from "@/services/ClientService"
 import { useAlertNotificationStore } from "./alertNotification"
-import { resetErrors, resetForm } from "@/components/helpers"
 
 export const useContactStore = defineStore('contact', () => {
   const notificationStore = useAlertNotificationStore()
   const states = ref([])
-  const errors = reactive({})
   const services = ref([])
   const sending = ref(false)
   const contactForm = reactive({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-    area_code_id: '',
-    service_id: '',
-    state_id: ''
+    data: {
+      name: '',
+      phone: '',
+      email: '',
+      message: '',
+      area_code_id: '',
+      service_id: '',
+      state_id: ''
+    },
+    errors: {},
+    resetData: function() {
+      Object.keys(this.data).forEach(key => {
+        this.data[key] = ''
+      })
+    },
+    resetErrors: function() {
+      Object.keys(this.errors).forEach(key => delete this.errors[key])
+    }
   })
 
   onBeforeMount(() => {
@@ -43,28 +52,26 @@ export const useContactStore = defineStore('contact', () => {
 
   async function submitContactForm(){
     sending.value = true 
-    resetErrors(errors)
-    await ClientService.postConsult(contactForm)
+    if(Object.keys(contactForm.errors).length !== 0) contactForm.resetErrors()
+
+    await ClientService.postConsult(contactForm.data)
       .then((response) => {
         notificationStore.alertType = 'success'
         notificationStore.alertMsg = 'Consulta enviada correctamente.'
         notificationStore.manageNotificationAlert()
 
-        resetForm(contactForm)
-        resetErrors(errors)
+        contactForm.resetData()
+        contactForm.resetErrors()
       })
       .catch( error => {
         console.log(error)
-        notificationStore.alertType = 'error'
-
-        if(error.status != 400){
-          notificationStore.alertMsg = 'Error inesperado, trata de nuevo mas tarde.'
+        if(error.status === 400){
+          Object.assign(contactForm.errors, error.response.data.errors)
+        }else{
+          notificationStore.alertType = 'error'
+          notificationStore.alertMsg = 'Error inesperado, intenta de nuevo.'
           notificationStore.manageNotificationAlert()
-          return
         }
-        notificationStore.alertMsg = 'Revisa que los campos esten llenados de forma correcta.'
-        notificationStore.manageNotificationAlert()
-        Object.assign(errors, error.response.data.errors)
       })
       .finally(() => {
         sending.value = false
@@ -92,7 +99,6 @@ export const useContactStore = defineStore('contact', () => {
 
   return {
     states,
-    errors,
     services,
     sending,
     contactForm,

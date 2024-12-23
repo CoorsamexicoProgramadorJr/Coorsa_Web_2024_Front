@@ -33,7 +33,7 @@
   <section class="w-screen h-screen text-white bg-[url('/img/fondo-aliados.jpg')] pt-[1%] flex flex-col justify-around items-center">
     <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold uppercase md:text-left w-[85%] text-center">Servicios</h2>
     <!-- Carrousel -->
-    <div class="f-carousel w-[85%] h-[65%] xl:text-3xl/none lg:text-xl/tight sm:text-lg" id="myCarousel">
+    <div class="f-carousel w-[85%] h-[65%] xl:text-3xl/none lg:text-xl/tight sm:text-lg flex items-center" id="myCarousel">
       <div v-for="(slide, index) in slidesBg" :key="index" :data-lazy-src="slide" class="relative bg-right bg-cover f-carousel__slide rounded-xl"></div>
     </div>
   </section>
