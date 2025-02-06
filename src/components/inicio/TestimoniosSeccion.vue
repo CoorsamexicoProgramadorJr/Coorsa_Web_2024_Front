@@ -45,15 +45,15 @@
   ]
 </script>
 <template>
-  <section class="w-screen h-screen bg-[url('/img/fondo-testimonios.jpg')] pt-[1%] flex flex-col justify-center items-center relative lg:gap-28">
+  <section class="w-screen h-screen bg-[url('/img/fondo-testimonios.jpg')] pt-[1%] flex flex-col justify-evenly items-center relative xl:gap-16">
     <h2 class="xl:text-7xl lg:text-6xl md:text-5xl text-4xl font-bold text-white w-[85%] text-center md:text-left">
       Testimonios
     </h2>
-    <div class="f-carousel lg:w-[90%] md:w-[80%] w-[85%] h-[65%] mx-auto text-white xl:text-lg lg:text-base" id="TstCarousel">
+    <div class="f-carousel lg:w-[90%] md:w-[80%] w-[85%] h-[75%] mx-auto text-white xl:text-lg lg:text-base" id="TstCarousel">
       <div v-for="(opinion, index) in opinios" :key="index" class="border-[3px] f-carousel__slide rounded-2xl">
         <blockquote class="flex flex-col justify-around h-full px-2">
           <p class="text-lg text-center">
-            <span class="block text-center text-red-700 text-9xl">&#8221;</span>
+            <span class="block text-6xl text-center text-red-700 lg:text-8xl xl:text-7xl">&#8221;</span>
             {{ opinion.quote }}
           </p>
           <div class="flex items-center justify-center h-10 gap-1 mx-auto bg-white w-44 rounded-2xl">

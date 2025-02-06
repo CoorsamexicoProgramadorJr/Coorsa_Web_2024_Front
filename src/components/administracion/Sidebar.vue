@@ -31,15 +31,15 @@
   ]
 </script>
 <template>
-  <nav class="h-full float-left bg-blue-900 py-3 lg:py-6 w-1/6 md:w-[12%] lg:w-1/4 text-white z-[1] flex flex-col items-center justify-between">
-    <div class="flex flex-col items-center gap-8 h-1/5">
-      <router-link to="/panel-principal" class="flex items-center justify-center flex-1 px-2">
+  <nav class="h-full fixed left-0 top-0 bg-blue-900 py-3 lg:py-6 w-1/6 md:w-[12%] lg:w-1/4 text-white z-[1] flex flex-col items-center justify-between">
+    <div class="flex flex-col items-center gap-8 h-1/3">
+      <router-link to="/panel-principal" class="flex items-center flex-1 px-2 justify-evenly">
         <Logo class="text-red-700 size-12 md:size-14 lg:hidden" />
         <CoorsaLogo class="hidden lg:block size-full"/>
       </router-link>
       
-      <div class="flex flex-col items-center justify-center flex-1 gap-2 px-2 lg:mb-16">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-16 lg:size-32">
+      <div class="relative flex flex-col items-center justify-center flex-1 gap-2 px-2 h-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-full aspect-square">
           <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
         </svg>
         <h3 class="hidden text-center uppercase lg:text-base lg:block">{{ userStore.user.name }}</h3>

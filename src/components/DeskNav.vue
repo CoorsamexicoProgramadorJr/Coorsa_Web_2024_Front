@@ -38,7 +38,7 @@
   ]
 </script>
 <template>
-   <nav class="fixed top-0 hidden z-[2] bg-[#0D0C15] rounded-[43px] h-[62px] lg:flex text-white px-10 right-[50%] items-center gap-5 translate-x-1/2">
+   <nav class="fixed top-0 hidden z-[3] bg-[#0D0C15] rounded-[43px] h-[62px] lg:flex text-white px-10 right-[50%] items-center gap-5 translate-x-1/2">
     <CoorsaLogo class="w-32"/>
     <router-link to="/" class="text-xl hover:font-bold">Inicio</router-link>
     <div class="flex items-center justify-center h-full group">

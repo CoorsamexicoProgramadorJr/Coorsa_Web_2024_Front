@@ -40,7 +40,7 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d466.65670163614504!2d-100.33418661977989!3d20.659258586113804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd891af2432995%3A0xa4597b878ffe23a8!2sCOORSA%20M%C3%A9xico%20Soluciones%20Log%C3%ADsticas!5e0!3m2!1ses-419!2smx!4v1730324759003!5m2!1ses-419!2smx" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="size-full">
       </iframe>
     </article>
-    <article class="lg:w-2/3 h-full pt-[7vh] lg:pt-10 md:px-[5%] px-[10%]">
+    <article class="lg:w-2/3 h-full pt-[7vh] lg:pt-10 md:px-[5%] px-[10%] mx-auto">
       <notificationAlert v-if="notificationStore.showAlert" >{{ notificationStore.alertMsg }}</notificationAlert>
       <!-- Contact form -->
       <form v-if="route.params.vacancyId.length == 0" @submit.prevent="contactStore.submitContactForm()" class="h-[85%] lg:h-[80%] md:pt-[5%] pt-3 grid grid-cols-2 md:grid-rows-6 grid-rows-8 lg:gap-x-[3%] md:gap-x-[5%] gap-y-2 sm:gap-y-0 2xl:text-2xl xl:text-xl text-lg" novalidate>
